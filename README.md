@@ -1,2 +1,3 @@
-# liturgy-day
-Simple API for Liturgical Queries
+# Liturgy.day
+
+A Simple REST API for Liturgical Queries
