@@ -1,0 +1,61 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+body,
+html {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+img {
+  width: 16px;
+  height: auto;
+}
+@media (prefers-color-scheme: dark) {
+  body,
+  html {
+    color: #fff;
+    background: #222;
+  }
+  img {
+    filter: invert(100%);
+  }
+}
+h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: calc(1.5rem + 1.5vw);
+  font-weight: 500;
+  line-height: 1.2;
+}
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+p {
+  margin: 0 0 1rem 0;
+}
+a {
+  color: #ff8408;
+  text-decoration: underline;
+}
+a:hover {
+  color: #ff9d3b;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  font-size: 0.8rem;
+  padding-top: 0.6rem;
+}

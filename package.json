@@ -1,0 +1,39 @@
+{
+  "name": "liturgy-day",
+  "version": "1.0.0",
+  "description": "A Simple REST API for Liturgical Queries",
+  "dependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@cfworker/sentry": "^1.12.1",
+    "@cloudflare/workers-types": "^3.4.0",
+    "@types/node": "^18.7.14",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.7.1",
+    "standard": "^16.0.4"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "test"
+  ],
+  "scripts": {
+    "precommit-msg": "echo Running pre-commit checks...",
+    "format": "prettier --write .",
+    "test": "prettier --check ."
+  },
+  "standard": {
+    "globals": [],
+    "ignore": [
+      "/functions/*.ts"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aensley/liturgy-day"
+  },
+  "author": "aensley@users.noreply.github.com",
+  "license": "MIT",
+  "type": "module"
+}

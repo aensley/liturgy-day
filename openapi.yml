@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: A Simple REST API for Liturgical Queries
+  version: 0.0.1
+paths:
+  /day:
+    get:
+      summary: Get information about today, or an optional given date.
+      description: For the given or current date, get the liturgical season, cycle, rosary mystery, etc.
+      parameters:
+        - name: date
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: timestamp
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 9999999999
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/day'
+components:
+  parameters: {}
+  schemas:
+    errorMessage:
+      type: string
+      maxLength: 256
+      description: A text message describing an error
+    day:
+      type: object
+      properties: {}

@@ -1,0 +1,40 @@
+OrdinaryTime:
+  Sunday: Glorious
+  Monday: Joyful
+  Tuesday: Sorrowful
+  Wednesday: Glorious
+  Thursday: Luminous
+  Friday: Sorrowful
+  Saturday: Joyful
+Advent:
+  Sunday: Joyful
+  Monday: Joyful
+  Tuesday: Sorrowful
+  Wednesday: Glorious
+  Thursday: Luminous
+  Friday: Sorrowful
+  Saturday: Joyful
+Christmas:
+  Sunday: Joyful
+  Monday: Joyful
+  Tuesday: Sorrowful
+  Wednesday: Glorious
+  Thursday: Luminous
+  Friday: Sorrowful
+  Saturday: Joyful
+Lent:
+  Sunday: Sorrowful
+  Monday: Joyful
+  Tuesday: Sorrowful
+  Wednesday: Glorious
+  Thursday: Luminous
+  Friday: Sorrowful
+  Saturday: Joyful
+Easter:
+  Sunday: Glorious
+  Monday: Joyful
+  Tuesday: Sorrowful
+  Wednesday: Glorious
+  Thursday: Luminous
+  Friday: Sorrowful
+  Saturday: Joyful
