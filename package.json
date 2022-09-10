@@ -40,5 +40,6 @@
   },
   "author": "aensley@users.noreply.github.com",
   "license": "MIT",
+  "platform": "node",
   "type": "module"
 }
