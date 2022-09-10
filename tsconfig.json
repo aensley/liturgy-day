@@ -3,6 +3,8 @@
     "target": "ES2020",
     "module": "ES2020",
     "lib": ["ES2020"],
-    "types": ["@types/node", "@types/js-yaml", "@cloudflare/workers-types"]
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "types": ["@types/node", "@types/jest", "@types/js-yaml", "@cloudflare/workers-types"]
   }
 }

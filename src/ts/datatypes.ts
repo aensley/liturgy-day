@@ -31,7 +31,7 @@ export enum WeekdayCycle {
   Season
 }
 
-export enum LoTHVolume {
+export enum LotHVolume {
   I, // Advent, Christmas
   II, // Lent, Triduum, Easter
   III, // Ordinary Time Weeks 1-17
@@ -41,9 +41,9 @@ export enum LoTHVolume {
 export interface LiturgicalRecords extends Array<LiturgicalRecord> {}
 
 export interface LiturgicalRecord {
-  Start: number // Timestamp
-  Season: Season
-  SundayCycle: SundayCycle
-  WeekdayCycle: WeekdayCycle
-  LoTHVolume: LoTHVolume
+  start: number // Timestamp
+  season: Season
+  'sunday-cycle': SundayCycle
+  'weekday-cycle': WeekdayCycle
+  'loth-volume': LotHVolume
 }
