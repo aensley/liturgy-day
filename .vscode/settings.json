@@ -50,5 +50,6 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
-  }
+  },
+  "standard.enable": false
 }

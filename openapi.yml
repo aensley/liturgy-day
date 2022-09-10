@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: A simple REST API for Liturgical queries
+  description: |
+    This API is provided - free of charge - for the purpose of aiding Catholic developers who need to adjust their application logic based on the Liturgical Calendar.
+  version: 0.0.1
+servers:
+  - url: https://liturgy.day/api/
+paths:
+  /day:
+    get:
+      summary: Get information about today, or an optional given date.
+      description: |
+        For the given or current date, get the liturgical season, cycle, rosary mystery, etc.
+
+        The date can be provided as a Unix timestamp (preferred) or date string in YYYY-MM-DD format.
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/timestamp'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dayResponse'
+        '400':
+          description: The provided parameters are incorrect
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  parameters:
+    date:
+      name: date
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/date'
+    timestamp:
+      name: timestamp
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/timestamp'
+  schemas:
+    errorResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/errorMessage'
+    dayResponse:
+      type: object
+      properties:
+        timestamp:
+          $ref: '#/components/schemas/timestamp'
+        season:
+          $ref: '#/components/schemas/season'
+        sunday-cycle:
+          $ref: '#/components/schemas/sunday-cycle'
+        weekday-cycle:
+          $ref: '#/components/schemas/weekday-cycle'
+        loth-volume:
+          $ref: '#/components/schemas/loth-volume'
+        rosary-series:
+          $ref: '#/components/schemas/rosary-series'
+    errorMessage:
+      type: string
+      maxLength: 256
+      description: A text message describing an error.
+      example: Date is too far in the past
+    date:
+      type: string
+      minLength: 10
+      maxLength: 10
+      format: date
+      pattern: '^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'
+      example: '2023-01-09'
+    timestamp:
+      type: integer
+      minimum: 1638057600 # First record available in data.
+      maximum: 1703462400 # Last record available in data.
+      example: 1673222400 # 2023-01-09
+    day-of-week:
+      type: string
+      enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      description: Day of the week.
+      example: Monday
+    days-of-week:
+      type: array
+      maxItems: 3
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/day-of-week'
+    season:
+      type: string
+      enum: ['Advent', 'Christmas', 'Lent', 'Easter', 'OrdinaryTime']
+      description: The Liturgical Season.
+      example: 'OrdinaryTime'
+    sunday-cycle:
+      type: string
+      enum: ['A', 'B', 'C']
+      description: The cycle year for Sunday readings.
+      example: A
+    weekday-cycle:
+      type: string
+      enum: ['I', 'II', 'Season']
+      description: |
+        The cycle year for weekday readings.
+        Does not apply to Advent, Christmas, Lent, or Easter.
+        For these seasons, the weekday cycle is always "Season."
+      example: I
+    loth-volume:
+      type: string
+      enum: ['I', 'II', 'III', 'IV']
+      description: The volume for Liturgy of the Hours.
+      example: III
+    rosary-series:
+      type: string
+      enum: ['Glorious', 'Joyful', 'Luminous', 'Sorrowful']
+      description: The series of mysteries for the rosary.
+      example: Joyful
+    rosary-days:
+      type: object
+      properties:
+        Glorious:
+          $ref: '#/components/schemas/days-of-week'
+        Joyful:
+          $ref: '#/components/schemas/days-of-week'
+        Luminous:
+          $ref: '#/components/schemas/days-of-week'
+        Sorrowful:
+          $ref: '#/components/schemas/days-of-week'
+    rosary-week:
+      type: object
+      properties:
+        Sunday:
+          $ref: '#/components/schemas/rosary-series'
+        Monday:
+          $ref: '#/components/schemas/rosary-series'
+        Tuesday:
+          $ref: '#/components/schemas/rosary-series'
+        Wednesday:
+          $ref: '#/components/schemas/rosary-series'
+        Thursday:
+          $ref: '#/components/schemas/rosary-series'
+        Friday:
+          $ref: '#/components/schemas/rosary-series'
+        Saturday:
+          $ref: '#/components/schemas/rosary-series'
