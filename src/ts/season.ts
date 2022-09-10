@@ -1,5 +1,5 @@
 import { load } from 'js-yaml'
-import { readFileSync } from 'node:fs'
+import { readFileSync } from 'fs'
 import { LiturgicalRecords, LiturgicalRecord } from 'datatypes'
 
 let liturgicalRecords: LiturgicalRecords | null = null
