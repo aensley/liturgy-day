@@ -1,6 +1,6 @@
-import { LiturgicalRecord } from '../../ts/datatypes'
-import { isValidDate } from '../../ts/date'
-import { getCurrentSeason } from '../../ts/season'
+import { LiturgicalRecord } from '../../src/ts/datatypes'
+import { isValidDate } from '../../src/ts/date'
+import { getCurrentSeason } from '../../src/ts/season'
 
 export const onRequestGet = async function (context): Promise<Response> {
   try {
