@@ -28,7 +28,6 @@
   "ts-standard": {
     "globals": [],
     "ignore": [
-      "/dist/**/*.ts",
       "/tests/**/*.js"
     ]
   },
