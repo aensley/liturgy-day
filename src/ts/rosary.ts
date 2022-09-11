@@ -4,7 +4,7 @@ import { getDayOfWeek } from './date'
 import { getCurrentSeason } from './season'
 
 /**
- * Gets the weekly schedule for rosary series for the given season.
+ * Get the weekly schedule for rosary series for the given season.
  *
  * @param {Season} season The season to get the rosary week for.
  *
@@ -15,7 +15,7 @@ export const getRosaryWeekForSeason = (season: Season): RosaryWeek => {
 }
 
 /**
- * Gets the Rosary Series for the given date.
+ * Get the Rosary Series for the given date.
  *
  * @param {number}  timestamp The UNIX timestamp of the date to check.
  * @param {Season=} season    The Season of the given timestamp. Will be calculated if not supplied.

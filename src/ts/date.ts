@@ -1,7 +1,7 @@
 import { Weekday } from './datatypes'
 
 /**
- * Validates that the given date string is a valid date in the proper format.
+ * Validate that the given date string is a valid date in the proper format.
  *
  * @param {string} date The date string to validate.
  *
@@ -20,7 +20,7 @@ export const isValidDate = (date: string): boolean => {
 }
 
 /**
- * Gets the day of the week for a given timestamp.
+ * Get the day of the week for a given timestamp.
  *
  * @param {number} timestamp The timestamp to check (in seconds; not milliseconds).
  *
