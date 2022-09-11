@@ -1,6 +1,14 @@
-import { LiturgicalRecords, LotHVolume, Season, SundayCycle, WeekdayCycle, RosarySeries } from './datatypes'
+import {
+  LiturgicalRecords,
+  LotHVolume,
+  Season,
+  SundayCycle,
+  WeekdayCycle,
+  RosarySeries,
+  RosaryWeeks
+} from './datatypes'
 
-export const rosaryData = {
+export const RosaryData: RosaryWeeks = {
   OrdinaryTime: {
     Sunday: RosarySeries.Glorious,
     Monday: RosarySeries.Joyful,
