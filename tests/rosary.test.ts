@@ -1,5 +1,5 @@
 import { RosarySeries, RosaryWeek, Season } from '../src/ts/datatypes'
-import { getRosarySeriesForDate, getRosaryWeekForSeason } from '../src/ts/rosary'
+import { getCurrentRosarySeries, getRosaryWeekForSeason } from '../src/ts/rosary'
 
 describe('Testing Rosary', () => {
   test('Test OrdinaryTime RosaryWeek', () => {
@@ -15,11 +15,11 @@ describe('Testing Rosary', () => {
     expect(getRosaryWeekForSeason(Season.OrdinaryTime)).toEqual(expectedResult)
   })
   test('Test OrdinaryTime Sunday RosarySeries', () => {
-    expect(getRosarySeriesForDate(1700956800)) // 2023-11-26 (Last Sunday in OT before Advent)
+    expect(getCurrentRosarySeries(1700956800)) // 2023-11-26 (Last Sunday in OT before Advent)
       .toEqual(RosarySeries.Glorious)
   })
   test('Test Advent Sunday RosarySeries', () => {
-    expect(getRosarySeriesForDate(1701561600)) // 2023-12-03 (First Sunday of Advent)
+    expect(getCurrentRosarySeries(1701561600)) // 2023-12-03 (First Sunday of Advent)
       .toEqual(RosarySeries.Joyful)
   })
 })

@@ -22,7 +22,7 @@ export const getRosaryWeekForSeason = (season: Season): RosaryWeek => {
  *
  * @returns {RosarySeries}
  */
-export const getRosarySeriesForDate = (timestamp: number, season: Season | null = null): RosarySeries => {
+export const getCurrentRosarySeries = (timestamp: number, season: Season | null = null): RosarySeries => {
   const dayOfWeek = getDayOfWeek(timestamp)
   if (season == null) {
     season = getCurrentSeason(timestamp).season

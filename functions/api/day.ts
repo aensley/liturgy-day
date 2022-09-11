@@ -1,5 +1,6 @@
-import { LiturgicalRecord } from '../../src/ts/datatypes'
+import { DayResponse, LiturgicalRecord, RosarySeries } from '../../src/ts/datatypes'
 import { isValidDate } from '../../src/ts/date'
+import { getCurrentRosarySeries } from '../../src/ts/rosary'
 import { getCurrentSeason } from '../../src/ts/season'
 
 export const onRequestGet = async function (context): Promise<Response> {
@@ -17,7 +18,16 @@ export const onRequestGet = async function (context): Promise<Response> {
     }
 
     const season: LiturgicalRecord = getCurrentSeason(check)
-    return new Response(JSON.stringify(season), { status: 200 })
+    const rosarySeries: RosarySeries = getCurrentRosarySeries(check)
+    const response: DayResponse = {
+      timestamp: check,
+      season: season.season,
+      'sunday-cycle': season['sunday-cycle'],
+      'weekday-cycle': season['weekday-cycle'],
+      'loth-volume': season['loth-volume'],
+      'rosary-series': rosarySeries
+    }
+    return new Response(JSON.stringify(response), { status: 200 })
   } catch (e) {
     switch (e.constructor) {
       case Error:
