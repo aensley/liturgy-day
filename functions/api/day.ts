@@ -2,6 +2,7 @@ import { DayResponse, LiturgicalRecord, RosarySeries } from '../../src/ts/dataty
 import { isValidDate } from '../../src/ts/date'
 import { getCurrentRosarySeries } from '../../src/ts/rosary'
 import { getCurrentSeason } from '../../src/ts/season'
+import { captureError } from '@cfworker/sentry'
 
 /**
  * Handle get requests.
@@ -21,7 +22,20 @@ export const onRequestGet = async function (context: any): Promise<Response> {
     const response: DayResponse = getDayResponse(check, season, rosarySeries)
     return new Response(JSON.stringify(response), { status: 200 })
   } catch (e) {
-    return await returnError(e)
+    const sha = await context.env.default.get('CF_PAGES_COMMIT_SHA')
+    const environment = await context.env.default.get('ENVIRONMENT')
+    /* eslint-disable @typescript-eslint/naming-convention */
+    const { event_id, posted } = captureError(
+      await context.env.default.get('SENTRY_DSN'),
+      environment,
+      sha,
+      e,
+      context.request,
+      ''
+    )
+    context.request.waitUntil(posted)
+    return await returnError(e, event_id)
+    /* eslint-enable @typescript-eslint/naming-convention */
   }
 }
 
@@ -50,11 +64,12 @@ const getDayResponse = (check: number, season: LiturgicalRecord, rosarySeries: R
 /**
  * Return the proper response when an error is encountered.
  *
- * @param {any} e Error object
+ * @param {any} e       Error object
+ * @param {any} eventId Error event ID
  *
  * @returns {Promise<Response>}
  */
-const returnError = async (e: any): Promise<Response> => {
+const returnError = async (e: any, eventId: any): Promise<Response> => {
   let statusNumber: number
   switch (e.constructor) {
     case Error:
@@ -67,7 +82,7 @@ const returnError = async (e: any): Promise<Response> => {
       statusNumber = 500
   }
 
-  return new Response(JSON.stringify({ error: e.message }), { status: statusNumber })
+  return new Response(JSON.stringify({ error: e.message, 'event-id': eventId }), { status: statusNumber })
 }
 
 /**

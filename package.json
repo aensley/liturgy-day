@@ -29,7 +29,8 @@
     "globals": [],
     "ignore": [
       "/tests/**/*.js"
-    ]
+    ],
+    "project": "tsconfig.json"
   },
   "repository": {
     "type": "git",
