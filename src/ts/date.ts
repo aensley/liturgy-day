@@ -16,19 +16,13 @@ export const isValidDate = (date: string): boolean => {
     return false
   }
 
-  const dateObject = new Date(date)
-  const dateTime = dateObject.getTime()
-  if (isNaN(dateTime)) {
-    return false
-  }
-
-  return dateObject.toISOString().slice(0, 10) === date
+  return new Date(date).toISOString().slice(0, 10) === date
 }
 
 /**
  * Gets the day of the week for a given timestamp.
  *
- * @param {number} timestamp The date string or timestamp to check.
+ * @param {number} timestamp The timestamp to check (in seconds; not milliseconds).
  *
  * @returns {Weekday}
  */
@@ -36,6 +30,5 @@ export const getDayOfWeek = (timestamp: number): Weekday => {
   timestamp = timestamp * 1000
   const timezoneOffset = new Date(timestamp).getTimezoneOffset() * 60 * 1000
   timestamp += timezoneOffset
-
   return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(timestamp)) as Weekday
 }
