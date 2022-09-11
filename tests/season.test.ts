@@ -1,14 +1,15 @@
 // https://jestjs.io/
+import { LiturgicalRecord, LotHVolume, Season, SundayCycle, WeekdayCycle } from '../src/ts/datatypes'
 import { getCurrentSeason } from '../src/ts/season'
 
 describe('Testing Season', () => {
   test('Test Christmas 2023', () => {
-    const expectedResult = {
+    const expectedResult: LiturgicalRecord = {
       start: 1671926400,
-      season: 'Christmas',
-      'sunday-cycle': 'A',
-      'weekday-cycle': 'Season',
-      'loth-volume': 'I'
+      season: Season.Christmas,
+      'sunday-cycle': SundayCycle.A,
+      'weekday-cycle': WeekdayCycle.Season,
+      'loth-volume': LotHVolume.I
     }
     expect(getCurrentSeason(1671926400)).toEqual(expectedResult)
   })
