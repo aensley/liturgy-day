@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: A simple REST API for Liturgical queries
+  title: A REST API for Liturgical queries
   description: |
     This API is provided - free of charge - for the purpose of aiding Catholic developers who need to adjust their application logic based on the Liturgical Calendar.
   version: 0.0.1

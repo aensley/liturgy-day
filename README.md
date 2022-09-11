@@ -12,4 +12,4 @@
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/aensley/liturgy-day?style=flat-square)](https://codeclimate.com/github/aensley/liturgy-day/issues)
 [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/aensley/liturgy-day?style=flat-square)](https://codeclimate.com/github/aensley/liturgy-day/test_coverage)
 
-A simple REST API for Liturgical queries
+A REST API for Liturgical queries
