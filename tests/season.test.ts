@@ -1,4 +1,3 @@
-// https://jestjs.io/
 import { LiturgicalRecord, LotHVolume, Season, SundayCycle, WeekdayCycle } from '../src/ts/datatypes'
 import { getCurrentSeason } from '../src/ts/season'
 
