@@ -3,7 +3,7 @@ name: ci
 on: push
 
 jobs:
-  build:
+  test:
     name: Test
     runs-on: ubuntu-latest
     strategy:
@@ -21,3 +21,9 @@ jobs:
         run: npm ci
       - name: Test
         run: npm test
+      - name: Report Coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov

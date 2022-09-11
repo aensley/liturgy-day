@@ -11,31 +11,38 @@
 
 // Weekday cycle does not apply to Advent, Christmas, Lent, or Easter
 
+export enum RosarySeries {
+  Glorious = 'Glorious',
+  Joyful = 'Joyful',
+  Luminous = 'Luminous',
+  Sorrowful = 'Sorrowful'
+}
+
 export enum Season {
-  Advent,
-  Christmas,
-  Lent,
-  Easter,
-  OrdinaryTime
+  Advent = 'Advent',
+  Christmas = 'Christmas',
+  Lent = 'Lent',
+  Easter = 'Easter',
+  OrdinaryTime = 'OrdinaryTime'
 }
 
 export enum SundayCycle {
-  A,
-  B,
-  C
+  A = 'A',
+  B = 'B',
+  C = 'C'
 }
 
 export enum WeekdayCycle {
-  I,
-  II,
-  Season
+  I = 'I',
+  II = 'II',
+  Season = 'Season'
 }
 
 export enum LotHVolume {
-  I, // Advent, Christmas
-  II, // Lent, Triduum, Easter
-  III, // Ordinary Time Weeks 1-17
-  IV // Ordinary Time Weeks 18-34
+  I = 'I', // Advent, Christmas
+  II = 'II', // Lent, Triduum, Easter
+  III = 'III', // Ordinary Time Weeks 1-17
+  IV = 'IV' // Ordinary Time Weeks 18-34
 }
 
 export interface LiturgicalRecords extends Array<LiturgicalRecord> {}
