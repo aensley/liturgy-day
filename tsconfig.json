@@ -5,6 +5,7 @@
     "lib": ["ES2020"],
     "esModuleInterop": true,
     "strictNullChecks": true,
+    "moduleResolution": "node",
     "types": ["@types/jest", "@cloudflare/workers-types"]
   }
 }
