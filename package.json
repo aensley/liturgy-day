@@ -37,5 +37,6 @@
     "url": "https://github.com/aensley/liturgy-day"
   },
   "author": "aensley@users.noreply.github.com",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
