@@ -1,6 +1,7 @@
 /.github/**/*.yml
 /.vscode/
 /coverage/
+/dist/
 /node_modules/
 /package-lock.json
 /src/_headers

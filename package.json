@@ -1,7 +1,7 @@
 {
   "name": "liturgy-day",
   "version": "1.0.0",
-  "description": "A REST API for Liturgical Queries",
+  "description": "A REST API for Liturgical queries",
   "devDependencies": {
     "@cfworker/sentry": "^1.12.1",
     "@cloudflare/workers-types": "^3.4.0",

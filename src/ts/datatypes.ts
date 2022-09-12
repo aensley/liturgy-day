@@ -71,6 +71,7 @@ export interface RosaryWeek {
 }
 
 export interface DayResponse {
+  version: string
   timestamp: number
   season: Season
   'sunday-cycle': SundayCycle
