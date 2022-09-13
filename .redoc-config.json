@@ -10,17 +10,9 @@
         "main": "#519872"
       }
     },
-    "components": {
-      "panels": {
-        "backgroundColor": "#222"
-      }
-    },
     "logo": {
       "gutter": "0",
       "maxWidth": "260px"
-    },
-    "sidebar": {
-      "backgroundColor": "#333"
     }
   }
 }
