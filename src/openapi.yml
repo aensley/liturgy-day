@@ -1,15 +1,28 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  title: A REST API for Liturgical queries
+  title: Liturgy.day
+  #summary: A REST API for Liturgical queries
   description: |
+    ## A REST API for Liturgical queries
+
     This API is provided - free of charge - for the purpose of aiding Catholic developers who need to adjust their application logic based on the Liturgical Calendar.
-  version: 0.0.1
+  version: 0.9.0
+  contact:
+    name: Andrew Ensley
+    url: https://github.com/aensley/liturgy-day/issues/new/choose
+  license:
+    name: MIT
+    url: https://github.com/aensley/liturgy-day/blob/main/LICENSE
+  x-logo:
+    url: 'logo.svg'
+    backgroundColor: '#FFFFFF'
+    altText: 'Liturgy.day Logo'
 servers:
-  - url: https://liturgy.day/api/
+  - url: https://liturgy.day/api
 paths:
   /day:
     get:
-      summary: Get information about today, or an optional given date.
+      summary: day
       description: |
         For the given or current date, get the liturgical season, cycle, rosary mystery, etc.
 
@@ -26,6 +39,12 @@ paths:
                 $ref: '#/components/schemas/dayResponse'
         '400':
           description: The provided parameters are incorrect
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: A server error has occurred
           content:
             application/json:
               schema:
@@ -50,6 +69,8 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/errorMessage'
+        event-id:
+          $ref: '#/components/schemas/event-id'
     dayResponse:
       type: object
       properties:
@@ -70,6 +91,11 @@ components:
       maxLength: 256
       description: A text message describing an error.
       example: Date is too far in the past
+    event-id:
+      type: string
+      maxLength: 256
+      description: An identifier for a specific even that can be used to trace errors or performance issues
+      example: api-123456
     date:
       type: string
       minLength: 10

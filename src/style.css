@@ -16,8 +16,12 @@ html {
   text-align: center;
   font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
-img {
+img.gh {
   width: 16px;
+  height: auto;
+}
+img.icon {
+  width: 100px;
   height: auto;
 }
 @media (prefers-color-scheme: dark) {
@@ -26,12 +30,14 @@ img {
     color: #fff;
     background: #222;
   }
-  img {
+  img.gh {
     filter: invert(100%);
   }
 }
 h1 {
-  margin: 0 0 0.5rem 0;
+  color: #519872;
+  margin: 0 0 0.4em 0;
+  font-family: 'Didact Gothic', sans-serif;
   font-size: calc(1.5rem + 1.5vw);
   font-weight: 500;
   line-height: 1.2;
@@ -45,11 +51,11 @@ p {
   margin: 0 0 1rem 0;
 }
 a {
-  color: #ff8408;
+  color: #519872;
   text-decoration: underline;
 }
 a:hover {
-  color: #ff9d3b;
+  color: #40795b;
 }
 footer {
   position: absolute;

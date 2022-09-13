@@ -4,3 +4,5 @@
 /node_modules/
 /package-lock.json
 /src/_headers
+/redoc-static.html
+/src/docs.html
