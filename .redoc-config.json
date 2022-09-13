@@ -1,0 +1,26 @@
+{
+  "defaultSampleLanguage": "Javascript",
+  "downloadDefinitionUrl": "./openapi.yml",
+  "generateCodeSamples": {
+    "languages": ["Javascript", "curl", "Python"]
+  },
+  "theme": {
+    "colors": {
+      "primary": {
+        "main": "#519872"
+      }
+    },
+    "components": {
+      "panels": {
+        "backgroundColor": "#222"
+      }
+    },
+    "logo": {
+      "gutter": "0",
+      "maxWidth": "260px"
+    },
+    "sidebar": {
+      "backgroundColor": "#333"
+    }
+  }
+}

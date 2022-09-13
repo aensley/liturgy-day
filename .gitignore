@@ -1,2 +1,4 @@
 /node_modules/
 /coverage/
+/redoc-static.html
+/src/docs.html
