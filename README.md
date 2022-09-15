@@ -1,6 +1,13 @@
 <h1 align="center">
-<img src="src/icon.svg" alt="logo" style="width:80px;height:auto;margin:0 auto;" /><br/>
-<img src="src/text.svg" alt="Liturgy.day" style="width:310px;height:auto;margin:0 auto;" />
+<img
+  src="src/icon.svg"
+  alt="logo"
+  style="width:80px;height:auto;margin:0 auto;" />
+<br/>
+<img
+  src="src/text.svg"
+  alt="Liturgy.day"
+  style="width:310px;height:auto;margin:0 auto;" />
 </h1>
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
