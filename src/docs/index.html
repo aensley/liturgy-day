@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RapiDoc</title>
+    <link rel="icon" type="image/svg+xml" href="../icon.svg" />
+    <script type="module" src="https://unpkg.com/rapidoc@9.3.3/dist/rapidoc-min.js"></script>
+    <link rel="stylesheet" href="docs.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- https://rapidocweb.com/api.html -->
+    <rapi-doc
+      id="openapi-doc"
+      spec-url="../openapi.yml"
+      css-file="docs.css"
+      render-style="focused"
+      layout="row"
+      theme="dark"
+      bg-color="#222"
+      text-color="#eee"
+      primary-color="#519872"
+      font-size="largest"
+      show-method-in-nav-bar="as-colored-block"
+      use-path-in-nav-bar="true"
+      nav-item-spacing="relaxed"
+      on-nav-tag-click="show-description"
+      show-header="false"
+      allow-server-selection="false"
+      allow-authentication="false"
+      allow-search="false"
+      allow-advanced-search="false"
+      allow-spec-url-load="false"
+      allow-spec-file-load="false"
+      allow-spec-file-download="true"
+      schema-style="table"
+      schema-description-expanded="true">
+      <!-- show-components="true" -->
+      <img slot="nav-logo" src="../logo.svg" style="max-width: 330px; height: auto; margin: 0 6px 16px 6px" />
+    </rapi-doc>
+  </body>
+</html>
