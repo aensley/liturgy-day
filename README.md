@@ -1,4 +1,4 @@
-# Liturgy.day
+![logo](src/logo.svg)
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io)
@@ -14,4 +14,5 @@
 
 A REST API for Liturgical queries
 
-https://liturgy.day/docs
+- [API Documentation](https://liturgy.day/docs/)
+- [Support](https://github.com/aensley/liturgy-day/issues/new/choose)
