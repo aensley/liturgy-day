@@ -12,6 +12,8 @@ import { getCurrentSeason } from '../../src/ts/season'
  */
 export const onRequestGet = async function (context: any): Promise<Response> {
   try {
+    const responseHeaders = new Headers()
+    responseHeaders.set('Access-Control-Allow-Origin', '*')
     const { searchParams } = new URL(context.request.url)
     const timestamp = searchParams.get('timestamp') ?? ''
     const date = searchParams.get('date') ?? ''
@@ -19,7 +21,10 @@ export const onRequestGet = async function (context: any): Promise<Response> {
     const season: LiturgicalRecord = getCurrentSeason(check)
     const rosarySeries: RosarySeries = getCurrentRosarySeries(check)
     const response: DayResponse = getDayResponse(check, season, rosarySeries)
-    return new Response(JSON.stringify(response), { status: 200 })
+    return new Response(JSON.stringify(response), {
+      headers: responseHeaders,
+      status: 200
+    })
   } catch (e) {
     return await returnError(e)
   }
@@ -55,6 +60,8 @@ const getDayResponse = (check: number, season: LiturgicalRecord, rosarySeries: R
  * @returns {Promise<Response>}
  */
 const returnError = async (e: any): Promise<Response> => {
+  const responseHeaders = new Headers()
+  responseHeaders.set('Access-Control-Allow-Origin', '*')
   let statusNumber: number
   switch (e.constructor) {
     case Error:
@@ -67,7 +74,7 @@ const returnError = async (e: any): Promise<Response> => {
       statusNumber = 500
   }
 
-  return new Response(JSON.stringify({ error: e.message }), { status: statusNumber })
+  return new Response(JSON.stringify({ error: e.message }), { headers: responseHeaders, status: statusNumber })
 }
 
 /**
