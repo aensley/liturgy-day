@@ -1,4 +1,7 @@
-# Liturgy.day
+<h1 align="center">
+<img src="src/icon.svg" alt="logo" style="width:80px;height:auto;margin:0 auto;" /><br/>
+<img src="src/text.svg" alt="Liturgy.day" style="width:310px;height:auto;margin:0 auto;" />
+</h1>
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io)
@@ -12,6 +15,9 @@
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/aensley/liturgy-day?style=flat-square)](https://codeclimate.com/github/aensley/liturgy-day/issues)
 [![Code Climate coverage](https://img.shields.io/codeclimate/coverage/aensley/liturgy-day?style=flat-square)](https://codeclimate.com/github/aensley/liturgy-day/test_coverage)
 
+## Liturgy.day
+
 A REST API for Liturgical queries
 
-https://liturgy.day/docs
+- [API Documentation](https://liturgy.day/docs/)
+- [Support](https://github.com/aensley/liturgy-day/issues/new/choose)
