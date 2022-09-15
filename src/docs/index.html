@@ -2,25 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>RapiDoc</title>
+    <title>Docs | Liturgy.day</title>
     <link rel="icon" type="image/svg+xml" href="../icon.svg" />
     <script type="module" src="https://unpkg.com/rapidoc@9.3.3/dist/rapidoc-min.js"></script>
     <link rel="stylesheet" href="docs.css" />
     <style></style>
   </head>
   <body>
-    <!-- https://rapidocweb.com/api.html -->
     <rapi-doc
       id="openapi-doc"
       spec-url="../openapi.yml"
       css-file="docs.css"
-      render-style="focused"
+      render-style="read"
       layout="row"
       theme="dark"
       bg-color="#222"
       text-color="#eee"
       primary-color="#519872"
       font-size="largest"
+      load-fonts="false"
       show-method-in-nav-bar="as-colored-block"
       use-path-in-nav-bar="true"
       nav-item-spacing="relaxed"
@@ -34,8 +34,8 @@
       allow-spec-file-load="false"
       allow-spec-file-download="true"
       schema-style="table"
-      schema-description-expanded="true">
-      <!-- show-components="true" -->
+      schema-description-expanded="true"
+      allow-schema-description-expand-toggle="false">
       <img slot="nav-logo" src="../logo.svg" style="max-width: 330px; height: auto; margin: 0 6px 16px 6px" />
     </rapi-doc>
   </body>

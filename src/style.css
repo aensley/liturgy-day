@@ -38,16 +38,21 @@ html {
   }
 }
 img {
-  width: 5rem;
+  clear: both;
+  display: block;
   height: auto;
+  margin: 0 auto;
+}
+#icon {
+  width: 5rem;
+  margin-bottom: 1rem;
+}
+#text {
+  margin: 0 auto 1.5em auto;
+  width: 19.375rem;
 }
 h1 {
-  color: var(--primary-color);
-  margin: 0 0 0.4em 0;
-  font-family: 'Didact Gothic', sans-serif;
-  font-size: 4rem;
-  font-weight: 500;
-  line-height: 1.2;
+  display: none;
 }
 p {
   margin: 0 0 1rem 0;

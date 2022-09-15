@@ -20,6 +20,19 @@ export const isValidDate = (date: string): boolean => {
 }
 
 /**
+ * Adjust a timestamp for the user's current Timezone.
+ *
+ * @param timestamp The timestamp to adjust.
+ *
+ * @returns {number}
+ */
+export const adjustTimestampForTimezone = (timestamp: number): number => {
+  const timezoneOffset = new Date(timestamp).getTimezoneOffset() * 60
+  timestamp += timezoneOffset
+  return timestamp
+}
+
+/**
  * Get the day of the week for a given timestamp.
  *
  * @param {number} timestamp The timestamp to check (in seconds; not milliseconds).

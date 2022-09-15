@@ -5,9 +5,7 @@ info:
   description: |
     ## A REST API for Liturgical queries
 
-    This API is provided for the purpose of aiding Catholic developers who need to adjust their application logic based on the Liturgical Calendar.
-
-    [Support](https://github.com/aensley/liturgy-day/issues/new/choose)
+    This API is provided to aid Catholic developers who need to adjust their application logic based on the Liturgical Calendar.
 
     ---
 
@@ -19,7 +17,7 @@ info:
 
     Advent begins four Sundays before Christmas and ends on Christmas.
 
-    The Liturgical color for Advent is **<span style="padding:4px 5px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:4px 5px;background:#dc7f9b;color:#fff;">rose</span>**.
+    The Liturgical color for Advent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
 
     The beginning of Advent also signifies the beginning of a new liturgical year.
 
@@ -27,7 +25,7 @@ info:
 
     Christmas begins on Christmas day and ends on the Feast of the Baptism of Jesus.
 
-    The Liturgical color for Christmas is **<span style="padding:4px 5px;color:#000;background:#eef0f2;">white</span>**.
+    The Liturgical color for Christmas is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**.
 
     Pope Paul VI set the feast day for the Baptism of Jesus as the first Sunday after January 6 (as early as January 7 or as late as January 13) or - if in the Epiphany is celebrated on Sunday January 7 or Sunday January 8 - on Monday January 8 or Monday January 9.
 
@@ -35,16 +33,16 @@ info:
 
     Lent begins on Ash Wednesday and ends on Holy Saturday.
 
-    The Liturgical color for Lent is **<span style="padding:4px 5px;background:#4c1a57;color:#fff;">purple</span>**, except on:
+    The Liturgical color for Lent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on:
 
-    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:4px 5px;background:#dc7f9b;color:#fff;">rose</span>**.
-    - Palm Sunday and Good Friday when it is **<span style="padding:4px 5px;background:#d73337;color:#fff;">red</span>**.
+    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
+    - Palm Sunday and Good Friday when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     #### Easter
 
     Easter is the most important liturgical season for the Church. The season begins on Easter Sunday and lasts until Pentecost.
 
-    The Liturgical color for Easter is **<span style="padding:4px 5px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:4px 5px;background:#d73337;color:#fff;">red</span>**.
+    The Liturgical color for Easter is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     Pentecost also marks the birthday of the Church.
 
@@ -52,7 +50,7 @@ info:
 
     Ordinary time is all time from Christmas to Lent and Pentecost to Advent.
 
-    The Liturgical color for Ordinary Time is **<span style="padding:4px 5px;background:#519872;color:#fff;">green</span>**.
+    The Liturgical color for Ordinary Time is **<span style="padding:1px 5px 4px;background:#519872;color:#fff;">green</span>**.
 
     ---
 
@@ -83,6 +81,18 @@ info:
     - Joyful mysteries
     - Luminous mysteries
     - Sorrowful mysteries
+
+    The days of the week for each series are as follows.
+
+    | Day       | Ordinary Time, Easter | Advent, Christmas | Lent      |
+    | --------- | --------------------- | ----------------- | --------- |
+    | Sunday    | Glorious              | Joyful            | Sorrowful |
+    | Monday    | Joyful                | Joyful            | Joyful    |
+    | Tuesday   | Sorrowful             | Sorrowful         | Sorrowful |
+    | Wednesday | Glorious              | Glorious          | Glorious  |
+    | Thurday   | Luminous              | Luminous          | Luminous  |
+    | Friday    | Sorrowful             | Sorrowful         | Sorrowful |
+    | Saturday  | Joyful                | Joyful            | Joyful    |
 
     ---
 
@@ -166,6 +176,36 @@ paths:
             HttpResponse<String> response = Unirest.get("https://liturgy.day/api/day?date=2023-01-09")
               .header("Content-Type", "application/json")
               .asString();
+        - lang: swift
+          label: Swift
+          source: |
+            import Foundation
+            let headers = ["Content-Type": "application/json"]
+            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/day?date=2023-01-09")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+              if (error != nil) {
+                print(error)
+              } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse)
+              }
+            })
+
+            dataTask.resume()
+        - lang: python
+          label: Python
+          source: |
+            import requests
+            url = "https://liturgy.day/api/day?date=2023-01-09"
+            headers = {"Content-Type": "application/json"}
+            response = requests.request("GET", url, headers=headers)
+            print(response.text)
         - lang: csharp
           label: C#
           source: |
@@ -193,14 +233,19 @@ paths:
               fmt.Println(res)
               fmt.Println(string(body))
             }
-        - lang: python
-          label: Python
+        - lang: php
+          label: PHP
           source: |
-            import requests
-            url = "https://liturgy.day/api/day?date=2023-01-09"
-            headers = {"Content-Type": "application/json"}
-            response = requests.request("GET", url, headers=headers)
-            print(response.text)
+            $client = new http\Client;
+            $request = new http\Client\Request;
+
+            $request->setRequestUrl('https://liturgy.day/api/day?date=2023-01-09');
+            $request->setRequestMethod('GET');
+            $request->setHeaders([ 'Content-Type' => 'application/json' ]);
+
+            $client->enqueue($request)->send();
+            $response = $client->getResponse();
+            echo $response->getBody();
         - lang: ruby
           label: Ruby
           source: |
@@ -225,41 +270,6 @@ paths:
             $headers=@{}
             $headers.Add("Content-Type", "application/json")
             $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/day?date=2023-01-09' -Method GET -Headers $headers
-        - lang: php
-          label: PHP
-          source: |
-            $client = new http\Client;
-            $request = new http\Client\Request;
-
-            $request->setRequestUrl('https://liturgy.day/api/day?date=2023-01-09');
-            $request->setRequestMethod('GET');
-            $request->setHeaders([ 'Content-Type' => 'application/json' ]);
-
-            $client->enqueue($request)->send();
-            $response = $client->getResponse();
-            echo $response->getBody();
-        - lang: swift
-          label: Swift
-          source: |
-            import Foundation
-            let headers = ["Content-Type": "application/json"]
-            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/day?date=2023-01-09")! as URL,
-                                                    cachePolicy: .useProtocolCachePolicy,
-                                                timeoutInterval: 10.0)
-            request.httpMethod = "GET"
-            request.allHTTPHeaderFields = headers
-
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-              if (error != nil) {
-                print(error)
-              } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
-              }
-            })
-
-            dataTask.resume()
 components:
   parameters:
     date:
