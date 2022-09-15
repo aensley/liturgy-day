@@ -26,7 +26,7 @@ export const isValidDate = (date: string): boolean => {
  *
  * @returns {number}
  */
-export const adjustTimestampForTimezone = (timestamp: number): number => {
+export const autoAdjustTimestampForTimezone = (timestamp: number): number => {
   const timezoneOffset = new Date(timestamp).getTimezoneOffset() * 60
   timestamp += timezoneOffset
   return timestamp
@@ -40,8 +40,7 @@ export const adjustTimestampForTimezone = (timestamp: number): number => {
  * @returns {Weekday}
  */
 export const getDayOfWeek = (timestamp: number): Weekday => {
+  timestamp = autoAdjustTimestampForTimezone(timestamp)
   timestamp = timestamp * 1000
-  const timezoneOffset = new Date(timestamp).getTimezoneOffset() * 60 * 1000
-  timestamp += timezoneOffset
   return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(timestamp)) as Weekday
 }
