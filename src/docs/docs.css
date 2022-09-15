@@ -1,0 +1,14 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold !important;
+}
+#api-info button {
+  width: auto !important;
+}
+#link-operations-top div[title] {
+  display: none;
+}
