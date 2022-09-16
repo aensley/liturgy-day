@@ -38,7 +38,7 @@ jobs:
         run: npm ci
       - name: Test
         run: npm run integration-test
-        with:
+        env:
           API_HOST: ${{ steps.api-host.outputs.group1 }}.liturgy-day.pages.dev
 
       - name: Set final commit status
