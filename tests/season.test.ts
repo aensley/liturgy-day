@@ -7,7 +7,7 @@
 import { LiturgicalRecord, LotHVolume, Season, SundayCycle, WeekdayCycle } from '../src/ts/datatypes'
 import { getCurrentSeason } from '../src/ts/season'
 
-describe('[UNIT] getCurrentSeason()', () => {
+describe('getCurrentSeason()', () => {
   test('should return Christmas', () => {
     const expectedResult: LiturgicalRecord = {
       start: 1671926400,

@@ -7,7 +7,7 @@
 import { RosarySeries, RosaryWeek, Season } from '../src/ts/datatypes'
 import { getCurrentRosarySeries, getRosaryWeekForSeason } from '../src/ts/rosary'
 
-describe('[UNIT] getRosaryWeekForSeason()', () => {
+describe('getRosaryWeekForSeason()', () => {
   test('should return the correct rosary week', () => {
     const expectedResult: RosaryWeek = {
       Sunday: RosarySeries.Glorious,
@@ -22,7 +22,7 @@ describe('[UNIT] getRosaryWeekForSeason()', () => {
   })
 })
 
-describe('[UNIT] getCurrentRosarySeries()', () => {
+describe('getCurrentRosarySeries()', () => {
   test('should return "Glorious" for a Sunday in ordinary time', () => {
     expect(getCurrentRosarySeries(1700956800)) // 2023-11-26 (Last Sunday in OT before Advent)
       .toEqual(RosarySeries.Glorious)

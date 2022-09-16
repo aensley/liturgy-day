@@ -6,7 +6,7 @@
 
 import { isValidDate } from '../src/ts/date'
 
-describe('[UNIT] isValidDate()', () => {
+describe('isValidDate()', () => {
   test('should properly validate dates', () => {
     const tests = {
       '0000000000-00-00': false,
