@@ -1,0 +1,34 @@
+name: integration-test
+
+on:
+  check_run:
+    types:
+      - completed
+
+jobs:
+  test:
+#    if: >-
+#      github.event.app.slug == 'cloudflare-pages'
+    name: Test
+    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [16.x]
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
+#      - uses: actions/checkout@v2
+#        with:
+#          ref: ${{ github.event.after }}
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v2
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: Install dependencies
+#        run: npm ci
+#      - name: Test
+#        run: npm run integration-test
+#        with:
+#          API_HOST: ${{ github.event.details_url }}

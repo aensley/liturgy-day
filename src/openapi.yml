@@ -287,6 +287,8 @@ components:
   schemas:
     errorResponse:
       type: object
+      required:
+        - error
       properties:
         error:
           $ref: '#/components/schemas/errorMessage'
@@ -294,6 +296,13 @@ components:
           $ref: '#/components/schemas/event-id'
     dayResponse:
       type: object
+      required:
+        - timestamp
+        - season
+        - sunday-cycle
+        - weekday-cycle
+        - loth-volume
+        - rosary-series
       properties:
         timestamp:
           $ref: '#/components/schemas/timestamp'
