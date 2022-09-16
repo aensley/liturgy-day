@@ -1,7 +1,13 @@
+/**
+ * Test date
+ *
+ * @group unit
+ */
+
 import { isValidDate } from '../src/ts/date'
 
-describe('Testing Date', () => {
-  test('Test dates', () => {
+describe('[UNIT] isValidDate()', () => {
+  test('should properly validate dates', () => {
     const tests = {
       '0000000000-00-00': false,
       '0000-00-00': false,
