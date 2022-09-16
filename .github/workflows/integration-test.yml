@@ -15,13 +15,13 @@ jobs:
         uses: myrotvorets/set-commit-status-action@master
         with:
           description: Running integration tests
-          sha: ${{ github.event.check_suite.head_sha }}
+          sha: ${{ github.event.check_run.head_sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
           status: pending
 
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.check_suite.head_sha }}
+          ref: ${{ github.event.check_run.head_sha }}
 
       - name: Set API_HOST
         uses: actions-ecosystem/action-regex-match@v2
@@ -46,6 +46,6 @@ jobs:
         if: always()
         with:
           description: Integration test ${{ job.status }}
-          sha: ${{ github.event.check_suite.head_sha }}
+          sha: ${{ github.event.check_run.head_sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
