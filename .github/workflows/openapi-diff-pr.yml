@@ -1,6 +1,6 @@
-on: [pull_request]
-
 name: openapi-diff-pr
+
+on: pull_request
 
 jobs:
   openapi-compatiable:

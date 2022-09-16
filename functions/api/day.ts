@@ -19,7 +19,10 @@ export const onRequestGet = async function (context: any): Promise<Response> {
     const season: LiturgicalRecord = getCurrentSeason(check)
     const rosarySeries: RosarySeries = getCurrentRosarySeries(check)
     const response: DayResponse = getDayResponse(check, season, rosarySeries)
-    return new Response(JSON.stringify(response), { status: 200 })
+    return new Response(JSON.stringify(response), {
+      headers: getResponseHeaders(),
+      status: 200
+    })
   } catch (e) {
     return await returnError(e)
   }
@@ -67,7 +70,7 @@ const returnError = async (e: any): Promise<Response> => {
       statusNumber = 500
   }
 
-  return new Response(JSON.stringify({ error: e.message }), { status: statusNumber })
+  return new Response(JSON.stringify({ error: e.message }), { headers: getResponseHeaders(), status: statusNumber })
 }
 
 /**
@@ -88,4 +91,16 @@ const getCheckTime = (timestamp: string, date: string): number => {
   }
 
   return check
+}
+
+/**
+ * Get the Headers object to return with responses.
+ *
+ * @returns {Headers}
+ */
+const getResponseHeaders = (): Headers => {
+  const responseHeaders = new Headers()
+  responseHeaders.set('Access-Control-Allow-Origin', '*')
+  responseHeaders.set('Content-Type', 'application/json')
+  return responseHeaders
 }

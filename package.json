@@ -9,7 +9,10 @@
     "@sentry/tracing": "^7.12.1",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.7.14",
+    "axios": "^0.27.2",
     "jest": "^29.0.3",
+    "jest-openapi": "^0.14.2",
+    "jest-runner-groups": "^2.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.7.1",
     "ts-jest": "^29.0.0",
@@ -23,13 +26,53 @@
   "scripts": {
     "precommit-msg": "echo Running pre-commit checks...",
     "format": "prettier --write .",
-    "test": "ts-standard && prettier --check . && jest --coverage"
+    "test": "ts-standard && prettier --check . && jest --group=unit --coverage",
+    "integration-test": "jest --group=integration"
   },
   "ts-standard": {
     "globals": [],
     "ignore": [
       "/tests/**/*.js"
     ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 120,
+    "useTabs": false,
+    "endOfLine": "lf",
+    "trailingComma": "none",
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "bracketSameLine": true,
+    "bracketSpacing": true,
+    "embeddedLanguageFormatting": "auto",
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxSingleQuote": false,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "vueIndentScriptAndStyle": false
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "runner": "groups",
+    "coverageThreshold": {
+      "global": {
+        "lines": 80
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
+  },
+  "engines": {
+    "node": ">=16 <17"
   },
   "repository": {
     "type": "git",

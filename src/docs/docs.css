@@ -6,9 +6,62 @@ h5,
 h6 {
   font-weight: bold !important;
 }
+#api-title,
+h1 {
+  font-size: 36px !important;
+}
+h2 {
+  font-size: 32px !important;
+}
+h3 {
+  font-size: 28px !important;
+}
+h4 {
+  font-size: 24px !important;
+}
+h5 {
+  font-size: 20px !important;
+}
+h6 {
+  font-size: 18px !important;
+}
+p {
+  font-size: 16px;
+}
+
+.m-markdown p,
+.m-markdown-small p {
+  line-height: 1.7 !important;
+}
+
+/* Fix download button width */
 #api-info button {
   width: auto !important;
 }
-#link-operations-top div[title] {
+
+/* Remove empty section header */
+#tag--General-⦂ {
+  padding: 0;
+}
+#link-operations-top div[title],
+#tag--General-⦂ div,
+.section-gap--read-mode > .divider {
   display: none;
 }
+/* /Remove empty section header */
+
+/* Change support link text */
+#api-info > span:nth-child(1) > a {
+  position: relative;
+  visibility: hidden;
+}
+#api-info > span:nth-child(1) > a:after {
+  content: 'Support';
+  visibility: visible;
+  position: relative;
+  left: -388px;
+}
+#api-info > span:nth-child(2) {
+  margin-left: -388px;
+}
+/* /Change support link text */
