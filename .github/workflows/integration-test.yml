@@ -7,28 +7,45 @@ on:
 
 jobs:
   test:
-#    if: >-
-#      github.event.app.slug == 'cloudflare-pages'
+    if: github.event.check_run.app.slug == 'cloudflare-pages'
     name: Test
     runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        node-version: [16.x]
     steps:
-      - env:
-          EVENT_CONTEXT: ${{ toJSON(github.event) }}
-        run: |
-          echo $EVENT_CONTEXT
-#      - uses: actions/checkout@v2
-#        with:
-#          ref: ${{ github.event.after }}
-#      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#      - name: Install dependencies
-#        run: npm ci
-#      - name: Test
-#        run: npm run integration-test
-#        with:
-#          API_HOST: ${{ github.event.details_url }}
+      - name: Set commit status as pending
+        uses: myrotvorets/set-commit-status-action@master
+        with:
+          description: Running integration tests
+          sha: ${{ github.event.check_suite.head_sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: pending
+
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.check_suite.head_sha }}
+
+      - name: Set API_HOST
+        uses: actions-ecosystem/action-regex-match@v2
+        id: api-host
+        with:
+          text: ${{ github.event.check_run.details_url }}
+          regex: 'liturgy-day\/([a-f0-9]+)-'
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - name: Install dependencies
+        run: npm ci
+      - name: Test
+        run: npm run integration-test
+        with:
+          API_HOST: ${{ steps.api-host.outputs.group1 }}.liturgy-day.pages.dev
+
+      - name: Set final commit status
+        uses: myrotvorets/set-commit-status-action@master
+        if: always()
+        with:
+          description: Integration test ${{ job.status }}
+          sha: ${{ github.event.check_suite.head_sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
