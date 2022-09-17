@@ -49,3 +49,14 @@ export const getResponseHeaders = (): Headers => {
   responseHeaders.set('Content-Type', 'application/json')
   return responseHeaders
 }
+
+/**
+ * Handle invalid requests.
+ *
+ * @param {any} context Cloudflare context
+ *
+ * @returns {Promise<Response>}
+ */
+export const onInvalidRequest = async function (context: any): Promise<Response> {
+  return new Response(JSON.stringify({ error: 'Invalid Request' }), { headers: getResponseHeaders(), status: 400 })
+}
