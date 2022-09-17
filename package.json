@@ -1,6 +1,6 @@
 {
   "name": "liturgy-day",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A REST API for Liturgical Queries",
   "devDependencies": {
     "@cfworker/sentry": "^1.12.1",

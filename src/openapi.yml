@@ -2,6 +2,17 @@ openapi: 3.0.3
 info:
   title: Liturgy.day
   #summary: A REST API for Liturgical queries
+  version: 1.0.0
+  contact:
+    name: Andrew Ensley
+    url: https://github.com/aensley/liturgy-day/issues/new/choose
+  license:
+    name: MIT
+    url: https://github.com/aensley/liturgy-day/blob/main/LICENSE
+  x-logo:
+    url: 'logo.svg'
+    backgroundColor: '#FFFFFF'
+    altText: 'Liturgy.day Logo'
   description: |
     ## A REST API for Liturgical queries
 
@@ -17,7 +28,7 @@ info:
 
     Advent begins four Sundays before Christmas and ends on Christmas.
 
-    The Liturgical color for Advent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
+    The Liturgical color for Advent is **<span style="padding:2px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:2px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
 
     The beginning of Advent also signifies the beginning of a new liturgical year.
 
@@ -25,7 +36,7 @@ info:
 
     Christmas begins on Christmas day and ends on the Feast of the Baptism of Jesus.
 
-    The Liturgical color for Christmas is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**.
+    The Liturgical color for Christmas is **<span style="padding:2px 5px 4px;color:#000;background:#eef0f2;">white</span>**.
 
     Pope Paul VI set the feast day for the Baptism of Jesus as the first Sunday after January 6 (as early as January 7 or as late as January 13) or - if in the Epiphany is celebrated on Sunday January 7 or Sunday January 8 - on Monday January 8 or Monday January 9.
 
@@ -33,16 +44,16 @@ info:
 
     Lent begins on Ash Wednesday and ends on Holy Saturday.
 
-    The Liturgical color for Lent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on:
+    The Liturgical color for Lent is **<span style="padding:2px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on:
 
-    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
-    - Palm Sunday and Good Friday when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
+    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:2px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
+    - Palm Sunday and Good Friday when it is **<span style="padding:2px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     #### Easter
 
     Easter is the most important liturgical season for the Church. The season begins on Easter Sunday and lasts until Pentecost.
 
-    The Liturgical color for Easter is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
+    The Liturgical color for Easter is **<span style="padding:2px 5px 4px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:2px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     Pentecost also marks the birthday of the Church.
 
@@ -50,7 +61,7 @@ info:
 
     Ordinary time is all time from Christmas to Lent and Pentecost to Advent.
 
-    The Liturgical color for Ordinary Time is **<span style="padding:1px 5px 4px;background:#519872;color:#fff;">green</span>**.
+    The Liturgical color for Ordinary Time is **<span style="padding:2px 5px 4px;background:#519872;color:#fff;">green</span>**.
 
     ---
 
@@ -96,17 +107,6 @@ info:
 
     ---
 
-  version: 0.9.1
-  contact:
-    name: Andrew Ensley
-    url: https://github.com/aensley/liturgy-day/issues/new/choose
-  license:
-    name: MIT
-    url: https://github.com/aensley/liturgy-day/blob/main/LICENSE
-  x-logo:
-    url: 'logo.svg'
-    backgroundColor: '#FFFFFF'
-    altText: 'Liturgy.day Logo'
 servers:
   - url: https://liturgy.day/api
 paths:
