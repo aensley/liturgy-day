@@ -20,7 +20,7 @@ export enum Season {
   Christmas = 'Christmas',
   Lent = 'Lent',
   Easter = 'Easter',
-  OrdinaryTime = 'OrdinaryTime'
+  OrdinaryTime = 'Ordinary Time'
 }
 
 export enum SundayCycle {
@@ -53,7 +53,7 @@ export interface LiturgicalRecord {
 }
 
 export interface RosaryWeeks {
-  OrdinaryTime: RosaryWeek
+  'Ordinary Time': RosaryWeek
   Advent: RosaryWeek
   Christmas: RosaryWeek
   Lent: RosaryWeek
