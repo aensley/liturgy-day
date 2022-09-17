@@ -9,7 +9,7 @@ import {
 } from './datatypes'
 
 export const RosaryData: RosaryWeeks = {
-  OrdinaryTime: {
+  'Ordinary Time': {
     Sunday: RosarySeries.Glorious,
     Monday: RosarySeries.Joyful,
     Tuesday: RosarySeries.Sorrowful,
