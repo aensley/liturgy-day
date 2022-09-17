@@ -605,15 +605,15 @@ components:
     dayResponse:
       type: object
       required:
-        - timestamp
+        - date
         - season
         - sunday-cycle
         - weekday-cycle
         - loth-volume
         - rosary-series
       properties:
-        timestamp:
-          $ref: '#/components/schemas/timestamp'
+        date:
+          $ref: '#/components/schemas/date'
         season:
           $ref: '#/components/schemas/season'
         sunday-cycle:
@@ -627,15 +627,15 @@ components:
     weekResponse:
       type: object
       required:
-        - timestamp
+        - date
         - season
         - sunday-cycle
         - weekday-cycle
         - loth-volume
         - rosary-week
       properties:
-        timestamp:
-          $ref: '#/components/schemas/timestamp'
+        date:
+          $ref: '#/components/schemas/date'
         season:
           $ref: '#/components/schemas/season'
         sunday-cycle:
@@ -649,12 +649,12 @@ components:
     rosaryDaysResponse:
       type: object
       required:
-        - timestamp
+        - date
         - season
         - rosary-days
       properties:
-        timestamp:
-          $ref: '#/components/schemas/timestamp'
+        date:
+          $ref: '#/components/schemas/date'
         season:
           $ref: '#/components/schemas/season'
         rosary-days:
