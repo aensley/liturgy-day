@@ -78,7 +78,7 @@ export interface RosaryDays {
 }
 
 export interface DayResponse {
-  timestamp: number
+  date: string
   season: Season
   'sunday-cycle': SundayCycle
   'weekday-cycle': WeekdayCycle
@@ -87,11 +87,16 @@ export interface DayResponse {
 }
 
 export interface WeekResponse {
-  timestamp: number
+  date: string
   season: Season
   'sunday-cycle': SundayCycle
   'weekday-cycle': WeekdayCycle
   'loth-volume': LotHVolume
-  'rosary-days': RosaryDays
   'rosary-week': RosaryWeek
+}
+
+export interface RosaryDaysResponse {
+  date: string
+  season: Season
+  'rosary-days': RosaryDays
 }

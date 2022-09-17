@@ -13,10 +13,10 @@ jestOpenAPI(resolve('src/openapi.yml'))
 
 const apiHost = process.env.API_HOST ?? 'liturgy.day'
 
-describe('GET /week/{date}', () => {
+describe('GET /rosary-days/{date}', () => {
   test('should satisfy OpenAPI spec', async () => {
     console.info('API_HOST: ', apiHost)
-    const res = await axios.get('https://' + apiHost + '/api/week/2023-01-09')
+    const res = await axios.get('https://' + apiHost + '/api/rosary-days/2023-01-09')
 
     expect(res.status).toEqual(200)
     // Assert that the HTTP response satisfies the OpenAPI spec

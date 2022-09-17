@@ -2,6 +2,17 @@ openapi: 3.0.3
 info:
   title: Liturgy.day
   #summary: A REST API for Liturgical queries
+  version: 1.0.0
+  contact:
+    name: Andrew Ensley
+    url: https://github.com/aensley/liturgy-day/issues/new/choose
+  license:
+    name: MIT
+    url: https://github.com/aensley/liturgy-day/blob/main/LICENSE
+  x-logo:
+    url: 'logo.svg'
+    backgroundColor: '#FFFFFF'
+    altText: 'Liturgy.day Logo'
   description: |
     ## A REST API for Liturgical queries
 
@@ -17,7 +28,7 @@ info:
 
     Advent begins four Sundays before Christmas and ends on Christmas.
 
-    The Liturgical color for Advent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
+    The Liturgical color for Advent is **<span style="padding:2px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on Gaudete Sunday (3rd Sunday of Advent) when it is **<span style="padding:2px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
 
     The beginning of Advent also signifies the beginning of a new liturgical year.
 
@@ -25,7 +36,7 @@ info:
 
     Christmas begins on Christmas day and ends on the Feast of the Baptism of Jesus.
 
-    The Liturgical color for Christmas is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**.
+    The Liturgical color for Christmas is **<span style="padding:2px 5px 4px;color:#000;background:#eef0f2;">white</span>**.
 
     Pope Paul VI set the feast day for the Baptism of Jesus as the first Sunday after January 6 (as early as January 7 or as late as January 13) or - if in the Epiphany is celebrated on Sunday January 7 or Sunday January 8 - on Monday January 8 or Monday January 9.
 
@@ -33,16 +44,16 @@ info:
 
     Lent begins on Ash Wednesday and ends on Holy Saturday.
 
-    The Liturgical color for Lent is **<span style="padding:1px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on:
+    The Liturgical color for Lent is **<span style="padding:2px 5px 4px;background:#4c1a57;color:#fff;">purple</span>**, except on:
 
-    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:1px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
-    - Palm Sunday and Good Friday when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
+    - Laetare Sunday (4th Sunday of Lent) when it it **<span style="padding:2px 5px 4px;background:#dc7f9b;color:#fff;">rose</span>**.
+    - Palm Sunday and Good Friday when it is **<span style="padding:2px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     #### Easter
 
     Easter is the most important liturgical season for the Church. The season begins on Easter Sunday and lasts until Pentecost.
 
-    The Liturgical color for Easter is **<span style="padding:1px 5px 4px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:1px 5px 4px;background:#d73337;color:#fff;">red</span>**.
+    The Liturgical color for Easter is **<span style="padding:2px 5px 4px;color:#000;background:#eef0f2;">white</span>**, except on Pentecost when it is **<span style="padding:2px 5px 4px;background:#d73337;color:#fff;">red</span>**.
 
     Pentecost also marks the birthday of the Church.
 
@@ -50,7 +61,7 @@ info:
 
     Ordinary time is all time from Christmas to Lent and Pentecost to Advent.
 
-    The Liturgical color for Ordinary Time is **<span style="padding:1px 5px 4px;background:#519872;color:#fff;">green</span>**.
+    The Liturgical color for Ordinary Time is **<span style="padding:2px 5px 4px;background:#519872;color:#fff;">green</span>**.
 
     ---
 
@@ -96,30 +107,18 @@ info:
 
     ---
 
-  version: 0.9.1
-  contact:
-    name: Andrew Ensley
-    url: https://github.com/aensley/liturgy-day/issues/new/choose
-  license:
-    name: MIT
-    url: https://github.com/aensley/liturgy-day/blob/main/LICENSE
-  x-logo:
-    url: 'logo.svg'
-    backgroundColor: '#FFFFFF'
-    altText: 'Liturgy.day Logo'
 servers:
   - url: https://liturgy.day/api
 paths:
-  /day:
+  /day/{date}:
     get:
       summary: day
       description: |
-        For the given or current date, get the Liturgical season, Sunday cycle, Weekday cycle, Liturgy of the Hours volume, and Rosary series.
+        For the given date, get the Liturgical season, Sunday cycle, Weekday cycle, Liturgy of the Hours volume, and Rosary series.
 
-        The date can be provided as a **date** string in `YYYY-MM-DD` format (preferred) or a Unix **timestamp**.
+        The date must be provided as a **date** string in `YYYY-MM-DD` format.
       parameters:
-        - $ref: '#/components/parameters/date'
-        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/pathDate'
       responses:
         '200':
           description: 'OK'
@@ -146,13 +145,13 @@ paths:
         - lang: shell
           label: 'CLI'
           source: |
-            curl -X GET 'https://liturgy.day/api/day?date=2023-01-09' \
+            curl -X GET 'https://liturgy.day/api/day/2023-01-09' \
               -H 'Accept: application/json'
         - lang: javascript
           label: 'Node.js'
           source: |
             const fetch = require('node-fetch');
-            fetch('https://liturgy.day/api/day?date=2023-01-09', {
+            fetch('https://liturgy.day/api/day/2023-01-09', {
               method: 'GET',
               headers: { 'Accept': 'application/json' }
             })
@@ -162,7 +161,7 @@ paths:
         - lang: javascript
           label: 'JavaScript'
           source: |
-            fetch('https://liturgy.day/api/day?date=2023-01-09', {
+            fetch('https://liturgy.day/api/day/2023-01-09', {
               method: 'GET',
               headers: { 'Accept': 'application/json' }
             })
@@ -172,7 +171,7 @@ paths:
         - lang: java
           label: Java
           source: |
-            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/day?date=2023-01-09")
+            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/day/2023-01-09")
               .header("Accept", "application/json")
               .asString();
         - lang: swift
@@ -180,7 +179,7 @@ paths:
           source: |
             import Foundation
             let headers = ["Accept": "application/json"]
-            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/day?date=2023-01-09")! as URL,
+            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/day/2023-01-09")! as URL,
                                                     cachePolicy: .useProtocolCachePolicy,
                                                 timeoutInterval: 10.0)
             request.httpMethod = "GET"
@@ -201,14 +200,14 @@ paths:
           label: Python
           source: |
             import requests
-            url = "https://liturgy.day/api/day?date=2023-01-09"
+            url = "https://liturgy.day/api/day/2023-01-09"
             headers = {"Accept": "application/json"}
             response = requests.request("GET", url, headers=headers)
             print(response.text)
         - lang: csharp
           label: C#
           source: |
-            var client = new RestClient("https://liturgy.day/api/day?date=2023-01-09");
+            var client = new RestClient("https://liturgy.day/api/day/2023-01-09");
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
             IRestResponse response = client.Execute(request);
@@ -223,7 +222,7 @@ paths:
             )
 
             func main() {
-              url := "https://liturgy.day/api/day?date=2023-01-09"
+              url := "https://liturgy.day/api/day/2023-01-09"
               req, _ := http.NewRequest("GET", url, nil)
               req.Header.Add("Accept", "application/json")
               res, _ := http.DefaultClient.Do(req)
@@ -238,7 +237,7 @@ paths:
             $client = new http\Client;
             $request = new http\Client\Request;
 
-            $request->setRequestUrl('https://liturgy.day/api/day?date=2023-01-09');
+            $request->setRequestUrl('https://liturgy.day/api/day/2023-01-09');
             $request->setRequestMethod('GET');
             $request->setHeaders([ 'Accept' => 'application/json' ]);
 
@@ -252,7 +251,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://liturgy.day/api/day?date=2023-01-09")
+            url = URI("https://liturgy.day/api/day/2023-01-09")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -268,17 +267,16 @@ paths:
           source: |
             $headers=@{}
             $headers.Add("Accept", "application/json")
-            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/day?date=2023-01-09' -Method GET -Headers $headers
-  /week:
+            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/day/2023-01-09' -Method GET -Headers $headers
+  /week/{date}:
     get:
       summary: week
       description: |
-        For the given or current date, get the Liturgical season, Sunday cycle, Weekday cycle, Liturgy of the Hours volume, and Rosary schedule.
+        For the given date, get the Liturgical season, Sunday cycle, Weekday cycle, Liturgy of the Hours volume, and Rosary schedule.
 
-        The date can be provided as a **date** string in `YYYY-MM-DD` format (preferred) or a Unix **timestamp**.
+        The date must be provided as a **date** string in `YYYY-MM-DD` format.
       parameters:
-        - $ref: '#/components/parameters/date'
-        - $ref: '#/components/parameters/timestamp'
+        - $ref: '#/components/parameters/pathDate'
       responses:
         '200':
           description: 'OK'
@@ -305,13 +303,13 @@ paths:
         - lang: shell
           label: 'CLI'
           source: |
-            curl -X GET 'https://liturgy.day/api/week?date=2023-01-09' \
+            curl -X GET 'https://liturgy.day/api/week/2023-01-09' \
               -H 'Accept: application/json'
         - lang: javascript
           label: 'Node.js'
           source: |
             const fetch = require('node-fetch');
-            fetch('https://liturgy.day/api/week?date=2023-01-09', {
+            fetch('https://liturgy.day/api/week/2023-01-09', {
               method: 'GET',
               headers: { 'Accept': 'application/json' }
             })
@@ -321,7 +319,7 @@ paths:
         - lang: javascript
           label: 'JavaScript'
           source: |
-            fetch('https://liturgy.day/api/week?date=2023-01-09', {
+            fetch('https://liturgy.day/api/week/2023-01-09', {
               method: 'GET',
               headers: { 'Accept': 'application/json' }
             })
@@ -331,7 +329,7 @@ paths:
         - lang: java
           label: Java
           source: |
-            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/week?date=2023-01-09")
+            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/week/2023-01-09")
               .header("Accept", "application/json")
               .asString();
         - lang: swift
@@ -339,7 +337,7 @@ paths:
           source: |
             import Foundation
             let headers = ["Accept": "application/json"]
-            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/week?date=2023-01-09")! as URL,
+            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/week/2023-01-09")! as URL,
                                                     cachePolicy: .useProtocolCachePolicy,
                                                 timeoutInterval: 10.0)
             request.httpMethod = "GET"
@@ -360,14 +358,14 @@ paths:
           label: Python
           source: |
             import requests
-            url = "https://liturgy.day/api/week?date=2023-01-09"
+            url = "https://liturgy.day/api/week/2023-01-09"
             headers = {"Accept": "application/json"}
             response = requests.request("GET", url, headers=headers)
             print(response.text)
         - lang: csharp
           label: C#
           source: |
-            var client = new RestClient("https://liturgy.day/api/week?date=2023-01-09");
+            var client = new RestClient("https://liturgy.day/api/week/2023-01-09");
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
             IRestResponse response = client.Execute(request);
@@ -382,7 +380,7 @@ paths:
             )
 
             func main() {
-              url := "https://liturgy.day/api/week?date=2023-01-09"
+              url := "https://liturgy.day/api/week/2023-01-09"
               req, _ := http.NewRequest("GET", url, nil)
               req.Header.Add("Accept", "application/json")
               res, _ := http.DefaultClient.Do(req)
@@ -397,7 +395,7 @@ paths:
             $client = new http\Client;
             $request = new http\Client\Request;
 
-            $request->setRequestUrl('https://liturgy.day/api/week?date=2023-01-09');
+            $request->setRequestUrl('https://liturgy.day/api/week/2023-01-09');
             $request->setRequestMethod('GET');
             $request->setHeaders([ 'Accept' => 'application/json' ]);
 
@@ -411,7 +409,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://liturgy.day/api/week?date=2023-01-09")
+            url = URI("https://liturgy.day/api/week/2023-01-09")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -427,20 +425,173 @@ paths:
           source: |
             $headers=@{}
             $headers.Add("Accept", "application/json")
-            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/week?date=2023-01-09' -Method GET -Headers $headers
+            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/week/2023-01-09' -Method GET -Headers $headers
+  /rosary-days/{date}:
+    get:
+      summary: rosary-days
+      description: |
+        For the given date, get the Liturgical season and Rosary Days schedule.
+
+        The date must be provided as a **date** string in `YYYY-MM-DD` format.
+      parameters:
+        - $ref: '#/components/parameters/pathDate'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rosaryDaysResponse'
+        '400':
+          description: The provided parameters are incorrect
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        '500':
+          description: A server error has occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+              example:
+                error: A server error has occurred
+                event-id: api-123456
+      x-code-samples:
+        - lang: shell
+          label: 'CLI'
+          source: |
+            curl -X GET 'https://liturgy.day/api/rosary-days/2023-01-09' \
+              -H 'Accept: application/json'
+        - lang: javascript
+          label: 'Node.js'
+          source: |
+            const fetch = require('node-fetch');
+            fetch('https://liturgy.day/api/rosary-days/2023-01-09', {
+              method: 'GET',
+              headers: { 'Accept': 'application/json' }
+            })
+              .then((response) => response.json())
+              .then((response) => console.log(response))
+              .catch((err) => console.error(err))
+        - lang: javascript
+          label: 'JavaScript'
+          source: |
+            fetch('https://liturgy.day/api/rosary-days/2023-01-09', {
+              method: 'GET',
+              headers: { 'Accept': 'application/json' }
+            })
+              .then((response) => response.json())
+              .then((response) => console.log(response))
+              .catch((err) => console.error(err))
+        - lang: java
+          label: Java
+          source: |
+            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/rosary-days/2023-01-09")
+              .header("Accept", "application/json")
+              .asString();
+        - lang: swift
+          label: Swift
+          source: |
+            import Foundation
+            let headers = ["Accept": "application/json"]
+            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/rosary-days/2023-01-09")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+              if (error != nil) {
+                print(error)
+              } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse)
+              }
+            })
+
+            dataTask.resume()
+        - lang: python
+          label: Python
+          source: |
+            import requests
+            url = "https://liturgy.day/api/rosary-days/2023-01-09"
+            headers = {"Accept": "application/json"}
+            response = requests.request("GET", url, headers=headers)
+            print(response.text)
+        - lang: csharp
+          label: C#
+          source: |
+            var client = new RestClient("https://liturgy.day/api/rosary-days/2023-01-09");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+            IRestResponse response = client.Execute(request);
+        - lang: go
+          label: Go
+          source: |
+            package main
+            import (
+              "fmt"
+              "net/http"
+              "io/ioutil"
+            )
+
+            func main() {
+              url := "https://liturgy.day/api/rosary-days/2023-01-09"
+              req, _ := http.NewRequest("GET", url, nil)
+              req.Header.Add("Accept", "application/json")
+              res, _ := http.DefaultClient.Do(req)
+              defer res.Body.Close()
+              body, _ := ioutil.ReadAll(res.Body)
+              fmt.Println(res)
+              fmt.Println(string(body))
+            }
+        - lang: php
+          label: PHP
+          source: |
+            $client = new http\Client;
+            $request = new http\Client\Request;
+
+            $request->setRequestUrl('https://liturgy.day/api/rosary-days/2023-01-09');
+            $request->setRequestMethod('GET');
+            $request->setHeaders([ 'Accept' => 'application/json' ]);
+
+            $client->enqueue($request)->send();
+            $response = $client->getResponse();
+            echo $response->getBody();
+        - lang: ruby
+          label: Ruby
+          source: |
+            require 'uri'
+            require 'net/http'
+            require 'openssl'
+
+            url = URI("https://liturgy.day/api/rosary-days/2023-01-09")
+
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+            request = Net::HTTP::Get.new(url)
+            request["Accept"] = 'application/json'
+
+            response = http.request(request)
+            puts response.read_body
+        - lang: powershell
+          label: PowerShell
+          source: |
+            $headers=@{}
+            $headers.Add("Accept", "application/json")
+            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/rosary-days/2023-01-09' -Method GET -Headers $headers
 components:
   parameters:
-    date:
+    pathDate:
       name: date
-      in: query
+      in: path
+      required: true
       schema:
         $ref: '#/components/schemas/date'
-    timestamp:
-      name: timestamp
-      in: query
-      required: false
-      schema:
-        $ref: '#/components/schemas/timestamp'
   schemas:
     errorResponse:
       type: object
@@ -454,15 +605,15 @@ components:
     dayResponse:
       type: object
       required:
-        - timestamp
+        - date
         - season
         - sunday-cycle
         - weekday-cycle
         - loth-volume
         - rosary-series
       properties:
-        timestamp:
-          $ref: '#/components/schemas/timestamp'
+        date:
+          $ref: '#/components/schemas/date'
         season:
           $ref: '#/components/schemas/season'
         sunday-cycle:
@@ -476,16 +627,15 @@ components:
     weekResponse:
       type: object
       required:
-        - timestamp
+        - date
         - season
         - sunday-cycle
         - weekday-cycle
         - loth-volume
-        - rosary-days
         - rosary-week
       properties:
-        timestamp:
-          $ref: '#/components/schemas/timestamp'
+        date:
+          $ref: '#/components/schemas/date'
         season:
           $ref: '#/components/schemas/season'
         sunday-cycle:
@@ -494,10 +644,21 @@ components:
           $ref: '#/components/schemas/weekday-cycle'
         loth-volume:
           $ref: '#/components/schemas/loth-volume'
-        rosary-days:
-          $ref: '#/components/schemas/rosary-days'
         rosary-week:
           $ref: '#/components/schemas/rosary-week'
+    rosaryDaysResponse:
+      type: object
+      required:
+        - date
+        - season
+        - rosary-days
+      properties:
+        date:
+          $ref: '#/components/schemas/date'
+        season:
+          $ref: '#/components/schemas/season'
+        rosary-days:
+          $ref: '#/components/schemas/rosary-days'
     errorMessage:
       type: string
       maxLength: 256
