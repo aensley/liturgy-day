@@ -43,6 +43,7 @@ body:
       description: Which API endpoint has a bug?
       options:
         - /day
+        - /week
     validations:
       required: true
   - type: textarea
