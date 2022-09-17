@@ -59,9 +59,9 @@ p {
   content: 'Support';
   visibility: visible;
   position: relative;
-  left: -388px;
+  left: -380px;
 }
 #api-info > span:nth-child(2) {
-  margin-left: -388px;
+  margin-left: -380px;
 }
 /* /Change support link text */

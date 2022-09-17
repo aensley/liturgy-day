@@ -70,6 +70,13 @@ export interface RosaryWeek {
   Saturday: RosarySeries
 }
 
+export interface RosaryDays {
+  Glorious: Weekday[]
+  Joyful: Weekday[]
+  Luminous: Weekday[]
+  Sorrowful: Weekday[]
+}
+
 export interface DayResponse {
   timestamp: number
   season: Season
@@ -77,4 +84,14 @@ export interface DayResponse {
   'weekday-cycle': WeekdayCycle
   'loth-volume': LotHVolume
   'rosary-series': RosarySeries
+}
+
+export interface WeekResponse {
+  timestamp: number
+  season: Season
+  'sunday-cycle': SundayCycle
+  'weekday-cycle': WeekdayCycle
+  'loth-volume': LotHVolume
+  'rosary-days': RosaryDays
+  'rosary-week': RosaryWeek
 }
