@@ -433,7 +433,6 @@ components:
     date:
       name: date
       in: query
-      required: true
       schema:
         $ref: '#/components/schemas/date'
     timestamp:
