@@ -24,23 +24,18 @@ export const returnError = async (e: any): Promise<Response> => {
 }
 
 /**
- * Resolve the given parameters (if any) and returns the timestamp to check.
+ * Resolve the given parameters and return the timestamp to check.
  *
- * @param timestamp The timestamp supplied to the request.
  * @param date The date supplied to the request.
  *
  * @returns {number}
  */
-export const getCheckTime = (timestamp: string, date: string): number => {
-  let check = Math.floor(Date.now() / 1000)
-  const timestampNumber = parseInt(timestamp)
-  if (Number.isInteger(timestampNumber)) {
-    check = timestampNumber
-  } else if (isValidDate(date)) {
-    check = Math.floor(new Date(date).getTime() / 1000)
+export const getCheckTime = (date: string): number => {
+  if (!isValidDate(date)) {
+    throw new Error('Invalid date supplied')
   }
 
-  return check
+  return Math.floor(new Date(date).getTime() / 1000)
 }
 
 /**

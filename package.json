@@ -32,7 +32,7 @@
   "ts-standard": {
     "globals": [],
     "ignore": [
-      "/tests/**/*.js"
+      "/tests/**/*.ts"
     ]
   },
   "prettier": {
