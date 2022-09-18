@@ -50,7 +50,7 @@ jobs:
           if [ "$branchName" = "main" ]; then
             releaseVersion="${{ github.event.check_run.head_sha }}"
             curl -u ${ASSERTIBLE_DEPLOY_TOKEN}: "https://assertible.com/deployments" -d'{
-                "service": "${ASSERTIBLE_SERVICE_ID}",
+                "service": "04fecc16-3562-4972-b580-0bc9b4f81d8a",
                 "environment": "production",
                 "version": "${releaseVersion:0:7}"
             }'
@@ -58,7 +58,6 @@ jobs:
 
         env:
           ASSERTIBLE_DEPLOY_TOKEN: ${{ secrets.ASSERTIBLE_DEPLOY_TOKEN }}
-          ASSERTIBLE_SERVICE_ID: ${{ secrets.ASSERTIBLE_SERVICE_ID }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set final commit status
