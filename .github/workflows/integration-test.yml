@@ -59,6 +59,7 @@ jobs:
         env:
           ASSERTIBLE_DEPLOY_TOKEN: ${{ secrets.ASSERTIBLE_DEPLOY_TOKEN }}
           ASSERTIBLE_SERVICE_ID: ${{ secrets.ASSERTIBLE_SERVICE_ID }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set final commit status
         uses: myrotvorets/set-commit-status-action@master
