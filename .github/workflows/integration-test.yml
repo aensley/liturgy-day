@@ -42,7 +42,7 @@ jobs:
           API_HOST: ${{ steps.api-host.outputs.group1 }}.liturgy-day.pages.dev
 
       - name: Report prod deployments
-      - run: |
+        run: |
           branchName="$(gh api -H 'Accept: application/vnd.github+json' \
             /repos/aensley/liturgy-day/check-suites/${{ github.event.check_run.check_suite.id }} \
             --jq '.head_branch')"
