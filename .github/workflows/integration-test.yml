@@ -52,7 +52,7 @@ jobs:
             curl -u ${ASSERTIBLE_DEPLOY_TOKEN}: "https://assertible.com/deployments" -d'{
                 "service": "04fecc16-3562-4972-b580-0bc9b4f81d8a",
                 "environment": "production",
-                "version": "${releaseVersion:0:7}"
+                "version": "'${releaseVersion:0:7}'"
             }'
           fi
 
