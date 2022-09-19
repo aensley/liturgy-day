@@ -26,8 +26,8 @@
   "scripts": {
     "precommit-msg": "echo Running pre-commit checks...",
     "format": "prettier --write .",
-    "test": "ts-standard && prettier --check . && jest --group=unit --coverage",
-    "integration-test": "jest --group=integration"
+    "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
+    "integration-test": "jest --group=integration --verbose"
   },
   "ts-standard": {
     "globals": [],
