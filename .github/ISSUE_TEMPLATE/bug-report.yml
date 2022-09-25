@@ -42,8 +42,9 @@ body:
       label: API Endpoint
       description: Which API endpoint has a bug?
       options:
-        - /day
-        - /week
+        - /day/{date}
+        - /week/{date}
+        - /rosary-days/{date}
     validations:
       required: true
   - type: textarea
