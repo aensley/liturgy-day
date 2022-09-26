@@ -3,7 +3,8 @@
   "version": "1.0.2",
   "description": "A REST API for Liturgical Queries",
   "dependencies": {
-    "@cloudflare/pages-plugin-sentry": "^1.0.0"
+    "@cloudflare/pages-plugin-sentry": "^1.0.0",
+    "wrangler": "^2.1.6"
   },
   "devDependencies": {
     "@cfworker/sentry": "^1.12.1",
