@@ -1,10 +1,59 @@
 {
   "name": "liturgy-day",
+  "displayName": "Liturgy.day",
   "version": "1.0.1",
-  "description": "A REST API for Liturgical Queries",
+  "description": "A REST API for Liturgical queries",
+  "author": {
+    "name": "Andrew Ensley",
+    "email": "aensley@users.noreply.github.com",
+    "url": "https://andrewensley.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aensley/liturgy-day"
+  },
+  "bugs": {
+    "url": "https://github.com/aensley/liturgy-day/issues/new?template=bug-report.yml&title=%5BBug%5D%3A+"
+  },
+  "funding": [
+    "https://github.com/sponsors/aensley",
+    "https://paypal.me/AndrewEnsley"
+  ],
+  "keywords": [
+    "api",
+    "rest",
+    "liturgy",
+    "calendar",
+    "catholic",
+    "christian"
+  ],
+  "icon": "src/icon.svg",
+  "files": [
+    "src/ts/**/*",
+    "src/openapi.yml",
+    "src/*.svg"
+  ],
+  "main": "src/ts/season.ts",
+  "scripts": {
+    "precommit-msg": "echo Running pre-commit checks...",
+    "format": "prettier --write .",
+    "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
+    "integration-test": "jest --group=integration --verbose"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "test"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "platform": "node",
+  "type": "module",
   "devDependencies": {
     "@cfworker/sentry": "^1.12.1",
     "@cloudflare/workers-types": "^3.4.0",
+    "@semantic-release/git": "^10.0.1",
     "@sentry/browser": "^7.12.1",
     "@sentry/tracing": "^7.12.1",
     "@types/jest": "^29.0.0",
@@ -19,15 +68,32 @@
     "ts-standard": "^11.0.0",
     "typescript": "^4.8.3"
   },
-  "pre-commit": [
-    "precommit-msg",
-    "test"
-  ],
-  "scripts": {
-    "precommit-msg": "echo Running pre-commit checks...",
-    "format": "prettier --write .",
-    "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
-    "integration-test": "jest --group=integration --verbose"
+  "release": {
+    "branches": [
+      "main",
+      "add-automatic-releases"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "src/openapi.yml"
+          ]
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   },
   "ts-standard": {
     "globals": [],
@@ -64,22 +130,5 @@
         "lines": 80
       }
     }
-  },
-  "eslintConfig": {
-    "extends": "standard-with-typescript",
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    }
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aensley/liturgy-day"
-  },
-  "author": "aensley@users.noreply.github.com",
-  "license": "MIT",
-  "platform": "node",
-  "type": "module"
+  }
 }

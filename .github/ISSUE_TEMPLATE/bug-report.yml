@@ -48,17 +48,6 @@ body:
     validations:
       required: true
   - type: textarea
-    id: parameters
-    attributes:
-      label: Request Parameters
-      description: List the parameters you provided to the request
-      value: |
-        1. date: value
-        2. timestap: value
-        3. ...
-    validations:
-      required: true
-  - type: textarea
     id: received-response
     attributes:
       label: Response received

@@ -9,6 +9,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/8c22f05153c7133b5259/maintainability)](https://codeclimate.com/github/aensley/liturgy-day/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8c22f05153c7133b5259/test_coverage)](https://codeclimate.com/github/aensley/liturgy-day/test_coverage)
+![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/aensley/liturgy-day)
 [![Unit testing status](https://img.shields.io/github/workflow/status/aensley/liturgy-day/ci/main?label=ci)](https://github.com/aensley/liturgy-day/actions/workflows/ci.yml?query=branch%3Amain)
 [![API testing status](https://img.shields.io/github/workflow/status/aensley/liturgy-day/integration-test/main?label=api)](https://github.com/aensley/liturgy-day/actions/workflows/integration-test.yml?query=branch%3Amain)
 [![Assertible status](https://assertible.com/apis/04fecc16-3562-4972-b580-0bc9b4f81d8a/status?api_token=Lqffg4eC448DK1Zb)](https://assertible.com/dashboard#/services/04fecc16-3562-4972-b580-0bc9b4f81d8a/results)
