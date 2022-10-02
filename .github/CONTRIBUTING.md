@@ -6,6 +6,10 @@ All code in this repository must pass [prettier](https://prettier.io/) linting a
 
 Any conributions which do not pass the coding standards, unit tests, or integration tests will not be accepted.
 
+## Commit Messages
+
+Commit messages must follow the [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) standard.
+
 ## Repository Layout
 
 | Folder      | Contents                    |
@@ -19,8 +23,10 @@ Any conributions which do not pass the coding standards, unit tests, or integrat
 
 ## Setup
 
+This step will install dependencies and setup commit hooks.
+
 ```
-npm install
+npm run setup
 ```
 
 ## Update

@@ -2,7 +2,7 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat)](https://standardjs.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://prettier.io)
-[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![semantic-release: conventional commits](https://img.shields.io/badge/semantic--release-cc-fe5196?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aensley/liturgy-day?style=flat)
 [![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/liturgy.day?publish&style=flat)](https://observatory.mozilla.org/analyze/liturgy.day)
 [![Security Headers](https://img.shields.io/security-headers?style=flat&url=https%3A%2F%2Fliturgy.day)](https://securityheaders.com/?q=liturgy.day&followRedirects=on)

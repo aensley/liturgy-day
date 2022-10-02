@@ -77,13 +77,51 @@
   },
   "release": {
     "branches": [
-      "main",
-      "add-automatic-releases"
+      "main"
     ],
     "plugins": [
-      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
       "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "src/openapi.yml",
+              "label": "Open API Spec"
+            }
+          ]
+        }
+      ],
       "@semantic-release/npm",
+      [
+        "@google/semantic-release-replace-plugin",
+        {
+          "replacements": [
+            {
+              "files": [
+                "src/openapi.yml"
+              ],
+              "from": "version: .*",
+              "to": "version: ${nextRelease.version}",
+              "results": [
+                {
+                  "file": "src/openapi.yml",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                }
+              ],
+              "countMatches": true
+            }
+          ]
+        }
+      ],
       [
         "@semantic-release/git",
         {
@@ -92,8 +130,7 @@
             "src/openapi.yml"
           ]
         }
-      ],
-      "@semantic-release/github"
+      ]
     ]
   },
   "eslintConfig": {
