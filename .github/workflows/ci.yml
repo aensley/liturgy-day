@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16, 18]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,8 +22,10 @@ jobs:
       - name: Test
         run: npm test
       - name: Report Coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        if: ${{ matrix.node-version == 18 }}
+        run: |
+          curl -sL https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter after-build --coverage-input-type lcov ./coverage/lcov.info
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
