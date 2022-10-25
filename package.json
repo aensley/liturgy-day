@@ -1,15 +1,68 @@
 {
-  "name": "liturgy-day",
+  "name": "@aensley/liturgy-day",
+  "displayName": "Liturgy.day",
   "version": "1.0.1",
-  "description": "A REST API for Liturgical Queries",
+  "description": "A REST API for Liturgical queries",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aensley/liturgy-day.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "liturgy",
+    "calendar",
+    "catholic",
+    "christian"
+  ],
+  "author": {
+    "name": "Andrew Ensley",
+    "email": "aensley@users.noreply.github.com",
+    "url": "https://andrewensley.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aensley/liturgy-day/issues/new?assignees=aensley&labels=bug%2Ctriage&template=bug-report.yml&title=%5BBug%5D%3A+"
+  },
+  "funding": [
+    "https://github.com/sponsors/aensley",
+    "https://paypal.me/AndrewEnsley"
+  ],
+  "homepage": "https://liturgy.day",
+  "files": [
+    "src/ts/**/*",
+    "src/openapi.yml",
+    "src/*.svg"
+  ],
+  "scripts": {
+    "precommit-msg": "echo Running pre-commit checks...",
+    "format": "prettier --write .",
+    "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
+    "integration-test": "jest --group=integration --verbose",
+    "setup": "npm install && npm run prepare-hook",
+    "prepare-hook": "echo 'exec < /dev/tty && node_modules/.bin/cz --hook || true' > .git/hooks/prepare-commit-msg && chmod +x .git/hooks/prepare-commit-msg"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "test"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "platform": "node",
+  "type": "module",
   "devDependencies": {
+    "@aensley/semantic-release-openapi": "^1.1.5",
     "@cfworker/sentry": "^1.12.1",
     "@cloudflare/workers-types": "^3.4.0",
+    "@semantic-release/git": "^10.0.1",
     "@sentry/browser": "^7.12.1",
     "@sentry/tracing": "^7.12.1",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.7.14",
     "axios": "^0.27.2",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "jest": "^29.0.3",
     "jest-openapi": "^0.14.2",
     "jest-runner-groups": "^2.2.0",
@@ -19,15 +72,49 @@
     "ts-standard": "^11.0.0",
     "typescript": "^4.8.3"
   },
-  "pre-commit": [
-    "precommit-msg",
-    "test"
-  ],
-  "scripts": {
-    "precommit-msg": "echo Running pre-commit checks...",
-    "format": "prettier --write .",
-    "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
-    "integration-test": "jest --group=integration --verbose"
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/github",
+        {
+          "assets": [
+            {
+              "path": "src/openapi.yml",
+              "label": "Open API Spec"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/npm",
+      [
+        "@aensley/semantic-release-openapi",
+        {
+          "apiSpecFiles": [
+            "src/openapi.yml"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "src/openapi.yml"
+          ]
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   },
   "ts-standard": {
     "globals": [],
@@ -65,21 +152,9 @@
       }
     }
   },
-  "eslintConfig": {
-    "extends": "standard-with-typescript",
-    "parserOptions": {
-      "project": "./tsconfig.json"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "engines": {
-    "node": ">=16"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aensley/liturgy-day"
-  },
-  "author": "aensley@users.noreply.github.com",
-  "license": "MIT",
-  "platform": "node",
-  "type": "module"
+  }
 }
