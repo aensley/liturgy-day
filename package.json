@@ -52,7 +52,7 @@
   "platform": "node",
   "type": "module",
   "devDependencies": {
-    "@aensley/semantic-release-openapi": "^1.1.5",
+    "@aensley/semantic-release-openapi": "^1.1.6",
     "@cfworker/sentry": "^1.12.1",
     "@cloudflare/workers-types": "^3.4.0",
     "@semantic-release/git": "^10.0.1",
