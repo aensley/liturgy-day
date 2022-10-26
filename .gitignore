@@ -1,4 +1,4 @@
-/node_modules/
+/client/
 /coverage/
-/redoc-static.html
-/src/docs.html
+/node_modules/
+/openapitools.json

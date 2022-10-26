@@ -37,7 +37,7 @@ export const onRequestGet = async function (context: any): Promise<Response> {
  */
 const getDayResponse = (date: string, season: LiturgicalRecord, rosarySeries: RosarySeries): DayResponse => {
   const response: DayResponse = {
-    date: date,
+    date,
     season: season.season,
     'sunday-cycle': season['sunday-cycle'],
     'weekday-cycle': season['weekday-cycle'],
