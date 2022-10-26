@@ -36,7 +36,7 @@ export const onRequestGet = async function (context: any): Promise<Response> {
  */
 const getRosaryDaysResponse = (date: string, season: LiturgicalRecord, rosaryDays: RosaryDays): RosaryDaysResponse => {
   const response: RosaryDaysResponse = {
-    date: date,
+    date,
     season: season.season,
     'rosary-days': rosaryDays
   }

@@ -17,4 +17,5 @@
 A REST API for Liturgical queries
 
 - [API Usage Documentation](https://liturgy.day/docs/)
+- [Generate API Clients](https://liturgy.day/docs/#generate-api-clients)
 - [Support](https://github.com/aensley/liturgy-day/issues/new/choose)
