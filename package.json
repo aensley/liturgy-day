@@ -58,7 +58,7 @@
     "@cfworker/sentry": "^1.12.4",
     "@cloudflare/workers-types": "^3.18.0",
     "@semantic-release/git": "^10.0.1",
-    "@sentry/browser": "^7.17.0",
+    "@sentry/browser": "^7.17.2",
     "@sentry/tracing": "^7.17.0",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.7",
