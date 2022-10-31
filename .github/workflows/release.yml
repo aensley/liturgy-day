@@ -11,7 +11,7 @@ on: # Triggered by completed runs of the ci workflow on the main branch
 
 jobs:
   release:
-    name: Test
+    name: Release
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success' # only on success
     strategy:
