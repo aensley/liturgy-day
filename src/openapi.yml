@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Liturgy.day
   #summary: A REST API for Liturgical queries
-  version: 1.1.1
+  version: 1.1.2
   contact:
     name: Andrew Ensley
     url: https://github.com/aensley/liturgy-day/issues/new/choose
