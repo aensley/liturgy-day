@@ -28,7 +28,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to Cloudflare Pages
-        run: curl -X POST "${CFP_DEPLOY_HOOK}"
-        env:
-          CFP_DEPLOY_HOOK: ${{ secrets.CFP_DEPLOY_HOOK }}
