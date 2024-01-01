@@ -168,5 +168,103 @@ export const SeasonData: LiturgicalRecords = [
     'sunday-cycle': SundayCycle.B,
     'weekday-cycle': WeekdayCycle.Season,
     'loth-volume': LotHVolume.I
+  },
+  {
+    start: 1704758400, // 2024-01-09 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.B,
+    'weekday-cycle': WeekdayCycle.II,
+    'loth-volume': LotHVolume.III
+  },
+  {
+    start: 1707868800, // 2024-02-14 12AM UTC
+    season: Season.Lent,
+    'sunday-cycle': SundayCycle.B,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.II
+  },
+  {
+    start: 1711886400, // 2024-03-31 12AM UTC
+    season: Season.Easter,
+    'sunday-cycle': SundayCycle.B,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.II
+  },
+  {
+    start: 1716206400, // 2024-05-20 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.B,
+    'weekday-cycle': WeekdayCycle.II,
+    'loth-volume': LotHVolume.III
+  },
+  {
+    start: 1722772800, // 2024-08-04 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.B,
+    'weekday-cycle': WeekdayCycle.II,
+    'loth-volume': LotHVolume.IV
+  },
+  {
+    start: 1733054400, // 2024-12-01 12AM UTC
+    season: Season.Advent,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.I
+  },
+  {
+    start: 1735128000, // 2024-12-25 12AM UTC
+    season: Season.Christmas,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.I
+  },
+  {
+    start: 1736769600, // 2025-01-13 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.I,
+    'loth-volume': LotHVolume.III
+  },
+  {
+    start: 1741176000, // 2025-03-05 12AM UTC
+    season: Season.Lent,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.II
+  },
+  {
+    start: 1745150400, // 2025-04-20 12AM UTC
+    season: Season.Easter,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.II
+  },
+  {
+    start: 1749470400, // 2025-06-09 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.I,
+    'loth-volume': LotHVolume.III
+  },
+  {
+    start: 1754222400, // 2025-08-03 12AM UTC
+    season: Season.OrdinaryTime,
+    'sunday-cycle': SundayCycle.C,
+    'weekday-cycle': WeekdayCycle.I,
+    'loth-volume': LotHVolume.IV
+  },
+  {
+    start: 1764504000, // 2025-11-30 12AM UTC
+    season: Season.Advent,
+    'sunday-cycle': SundayCycle.A,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.I
+  },
+  {
+    start: 1766664000, // 2025-12-25 12AM UTC
+    season: Season.Christmas,
+    'sunday-cycle': SundayCycle.A,
+    'weekday-cycle': WeekdayCycle.Season,
+    'loth-volume': LotHVolume.I
   }
 ]

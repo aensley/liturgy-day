@@ -28,7 +28,15 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    Lato,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   body,
