@@ -23,7 +23,7 @@ jobs:
           base_spec: base/src/openapi.yml
           output_path: ./output
           github_token: ${{ github.token }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: diff-reports
           path: ./output
