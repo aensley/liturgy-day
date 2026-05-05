@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    if: github.event.check_run.app.slug == 'cloudflare-workers-and-pages'
+    if: github.event.check_run.name == 'Cloudflare Pages' && github.event.check_run.conclusion == 'success'
     name: Test
     runs-on: ubuntu-latest
     strategy:
@@ -30,8 +30,8 @@ jobs:
         uses: actions-ecosystem/action-regex-match@v2
         id: api-host
         with:
-          text: ${{ github.event.check_run.details_url }}
-          regex: 'liturgy-day\/([a-f0-9]+)-'
+          text: ${{ github.event.check_run.external_id }}
+          regex: '^([0-9a-f]+)-'
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
