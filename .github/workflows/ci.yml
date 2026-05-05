@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18]
+        node-version: [22, 24]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,7 +22,7 @@ jobs:
       - name: Test
         run: npm test
       - name: Report Coverage
-        if: ${{ matrix.node-version == 18 }}
+        if: ${{ matrix.node-version == 24 }}
         run: |
           curl -sL https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
