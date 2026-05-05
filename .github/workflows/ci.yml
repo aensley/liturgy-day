@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18]
+        node-version: [22, 24]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           ref: ${{ github.event.after }}
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
@@ -22,10 +22,8 @@ jobs:
       - name: Test
         run: npm test
       - name: Report Coverage
-        if: ${{ matrix.node-version == 18 }}
-        run: |
-          curl -sL https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter after-build --coverage-input-type lcov ./coverage/lcov.info
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        uses: qltysh/qlty-action/coverage@v2
+        if: ${{ matrix.node-version == 24 }}
+        with:
+          token: ${{ secrets.CC_TEST_REPORTER_ID }}
+          files: coverage/lcov.info
