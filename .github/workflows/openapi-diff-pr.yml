@@ -16,14 +16,22 @@ jobs:
         with:
           ref: ${{ github.base_ref }}
           path: base
-      - name: Run OpenAPI Diff (from HEAD revision)
-        uses: LimeFlight/openapi-diff-action@v3.0.10
+      - name: Check for breaking API changes
+        uses: oasdiff/oasdiff-action/breaking@v0.0.45
         with:
-          head_spec: head/src/openapi.yml
-          base_spec: base/src/openapi.yml
-          output_path: ./output
-          github_token: ${{ github.token }}
+          base: base/src/openapi.yml
+          revision: head/src/openapi.yml
+          fail-on: ERR
+      - name: Generate diff report
+        if: always()
+        uses: oasdiff/oasdiff-action/changelog@v0.0.45
+        with:
+          base: base/src/openapi.yml
+          revision: head/src/openapi.yml
+          format: html
+          output: ./output/openapi.html
       - uses: actions/upload-artifact@v7
+        if: always()
         with:
           name: diff-reports
           path: ./output
