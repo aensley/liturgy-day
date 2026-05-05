@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    if: github.event.check_run.app.slug == 'cloudflare-pages'
+    if: github.event.check_run.app.slug == 'cloudflare-workers-and-pages'
     name: Test
     runs-on: ubuntu-latest
     strategy:
