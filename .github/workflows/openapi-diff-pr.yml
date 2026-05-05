@@ -7,23 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out HEAD revision
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref }}
           path: head
       - name: Check out BASE revision
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.base_ref }}
           path: base
       - name: Run OpenAPI Diff (from HEAD revision)
-        uses: LimeFlight/openapi-diff-action@v3.0.9
+        uses: LimeFlight/openapi-diff-action@v3.0.10
         with:
           head_spec: head/src/openapi.yml
           base_spec: base/src/openapi.yml
           output_path: ./output
           github_token: ${{ github.token }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: diff-reports
           path: ./output
