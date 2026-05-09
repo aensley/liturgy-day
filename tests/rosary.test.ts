@@ -16,6 +16,10 @@ describe('getCurrentRosarySeries()', () => {
     expect(getCurrentRosarySeries(1701561600)) // 2023-12-03 (First Sunday of Advent)
       .toEqual(RosarySeries.Joyful)
   })
+  test('should accept an explicit season and return the correct series', () => {
+    // 2023-11-26 is a Sunday; passing Season.Advent directly skips the season lookup
+    expect(getCurrentRosarySeries(1700956800, Season.Advent)).toEqual(RosarySeries.Joyful)
+  })
 })
 
 describe('getRosaryWeekForSeason()', () => {

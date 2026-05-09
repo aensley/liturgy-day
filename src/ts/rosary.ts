@@ -1,5 +1,5 @@
 import { RosaryData } from './data'
-import { RosaryDays, RosarySeries, RosaryWeek, Season } from './datatypes'
+import { RosaryDays, RosarySeries, RosaryWeek, Season, Weekday } from './datatypes'
 import { getDayOfWeek } from './date'
 import { getCurrentSeason } from './season'
 
@@ -31,7 +31,7 @@ export const getRosaryDaysForSeason = (season: Season): RosaryDays => {
 
   const rosaryWeek: RosaryWeek = getRosaryWeekForSeason(season)
   for (const day in rosaryWeek) {
-    rosaryDays[rosaryWeek[day]].push(day)
+    rosaryDays[rosaryWeek[day as keyof RosaryWeek]].push(day as Weekday)
   }
 
   return rosaryDays

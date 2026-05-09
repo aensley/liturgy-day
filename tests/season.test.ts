@@ -19,9 +19,9 @@ describe('getCurrentSeason()', () => {
     expect(getCurrentSeason(1671926400)).toEqual(expectedResult)
   })
   test('should error on a date too far in the past', () => {
-    expect(() => getCurrentSeason(1638057599)).toThrowError('Date is too far in the past')
+    expect(() => getCurrentSeason(1638057599)).toThrow('Date is too far in the past')
   })
   test('should error on a date too far in the future', () => {
-    expect(() => getCurrentSeason(5680281600)).toThrowError('Date is too far in the future')
+    expect(() => getCurrentSeason(5680281600)).toThrow('Date is too far in the future')
   })
 })

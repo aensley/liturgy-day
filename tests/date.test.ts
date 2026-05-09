@@ -8,7 +8,7 @@ import { isValidDate } from '../src/ts/date'
 
 describe('isValidDate()', () => {
   test('should properly validate dates', () => {
-    const tests = {
+    const tests: Record<string, boolean> = {
       '0000000000-00-00': false,
       '0000-00-00': false,
       '2015-01-40': false,
