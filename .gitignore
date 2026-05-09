@@ -1,4 +1,5 @@
 /client/
+/dist/
 /coverage/
 /node_modules/
 /openapitools.json
