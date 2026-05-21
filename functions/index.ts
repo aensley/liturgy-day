@@ -5,7 +5,7 @@ export const onRequestGet = async (context: any): Promise<Response> => {
   return new HTMLRewriter()
     .on('footer', {
       element: (element) => {
-        element.prepend(` | v${version}`, { html: false })
+        element.prepend(`v${version} | `, { html: false })
       }
     })
     .transform(response)
