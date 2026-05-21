@@ -36,13 +36,12 @@
   ],
   "scripts": {
     "precommit-msg": "echo Running pre-commit checks...",
+    "build": "node scripts/build.js",
     "format": "prettier --write .",
     "test": "ts-standard && prettier --check . && jest --group=unit --coverage --verbose",
     "integration-test": "jest --group=integration --verbose",
-    "setup": "npm ci && npm run prepare-hook",
     "update": "npx npm-check-updates -u && npm update",
-    "generate": "rimraf ./client/ && npx @openapitools/openapi-generator-cli generate -i src/openapi.yml -o ./client/ -g",
-    "prepare-hook": "echo 'exec < /dev/tty && node_modules/.bin/cz --hook || true' > .git/hooks/prepare-commit-msg && chmod +x .git/hooks/prepare-commit-msg"
+    "generate": "rimraf ./client/ && npx @openapitools/openapi-generator-cli generate -i src/openapi.yml -o ./client/ -g"
   },
   "pre-commit": [
     "precommit-msg",
@@ -53,23 +52,30 @@
   },
   "platform": "node",
   "type": "module",
+  "dependencies": {
+    "@sentry/cloudflare": "^10.53.1"
+  },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260509.1",
+    "@cloudflare/workers-types": "^4.20260521.1",
     "@semantic-release/git": "^10.0.1",
+    "@sentry/browser": "^10.53.1",
+    "@sentry/core": "^10.53.1",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.6.2",
-    "axios": "^1.16.0",
+    "@types/node": "^25.9.1",
+    "axios": "^1.16.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.28.0",
     "jest": "^30.4.2",
     "jest-openapi": "^0.14.2",
     "jest-runner-groups": "^2.2.0",
     "pre-commit": "^2.0.0",
     "prettier": "^3.8.3",
+    "rapidoc": "^9.3.8",
     "rimraf": "^6.1.3",
     "semantic-release": "^25.0.3",
-    "semantic-release-openapi": "^2.3.0",
-    "ts-jest": "^29.4.9",
+    "semantic-release-openapi": "^2.3.3",
+    "ts-jest": "^29.4.11",
     "ts-standard": "^12.0.2",
     "typescript": "^6.0.3"
   },

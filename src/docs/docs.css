@@ -65,3 +65,9 @@ p {
   margin-left: -380px;
 }
 /* /Change support link text */
+
+#nav-logo {
+  max-width: 330px;
+  height: auto;
+  margin: 0 6px 16px 6px;
+}
