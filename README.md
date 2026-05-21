@@ -1,6 +1,6 @@
 ![logo](src/logo.svg)
 
-![npm](https://img.shields.io/github/package-json/v/aensley/liturgy-day?logo=openapiinitiative&label=api%20version)
+![version](https://img.shields.io/github/package-json/v/aensley/liturgy-day?logo=openapiinitiative&label=api%20version)
 [![license](https://img.shields.io/github/license/aensley/liturgy-day.svg)](https://github.com/aensley/liturgy-day/blob/main/LICENSE)
 [![prettier](https://img.shields.io/badge/prettier-ff69b4.svg?&logo=prettier&logoColor=fff)](https://prettier.io/)
 [![standard](https://img.shields.io/badge/standard-f3df49.svg?logo=standardjs&logoColor=000)](https://standardjs.com/)
