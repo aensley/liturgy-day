@@ -87,6 +87,14 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       [
+        "semantic-release-openapi",
+        {
+          "apiSpecFiles": [
+            "src/openapi.yml"
+          ]
+        }
+      ],
+      [
         "@semantic-release/github",
         {
           "assets": [
@@ -98,14 +106,6 @@
         }
       ],
       "@semantic-release/npm",
-      [
-        "semantic-release-openapi",
-        {
-          "apiSpecFiles": [
-            "src/openapi.yml"
-          ]
-        }
-      ],
       [
         "@semantic-release/git",
         {

@@ -24,12 +24,12 @@ jobs:
           fail-on: ERR
       - name: Generate diff report
         if: always()
-        uses: oasdiff/oasdiff-action/changelog@v0.0.45
+        uses: oasdiff/oasdiff-action/changelog@v0.0.47
         with:
           base: base/src/openapi.yml
           revision: head/src/openapi.yml
           format: html
-          output: ./output/openapi.html
+          output-to-file: ./output/openapi.html
       - uses: actions/upload-artifact@v7
         if: always()
         with:
