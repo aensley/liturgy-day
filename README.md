@@ -5,7 +5,7 @@
 [![prettier](https://img.shields.io/badge/prettier-ff69b4.svg?&logo=prettier&logoColor=fff)](https://prettier.io/)
 [![standard](https://img.shields.io/badge/standard-f3df49.svg?logo=standardjs&logoColor=000)](https://standardjs.com/)
 [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/aensley/liturgy-day.svg?label=OpenSSF%20scorecard)](https://scorecard.dev/viewer/?uri=github.com/aensley/liturgy-day)
-[![Socket Badge](https://badge.socket.dev/npm/package/@aensley/liturgy-day/1.2.0)](https://badge.socket.dev/npm/package/@aensley/liturgy-day/1.2.0)<br>
+[![Socket](https://badge.socket.dev/npm/package/@aensley/liturgy-day)](https://socket.dev/npm/package/@aensley/liturgy-day)<br>
 [![Maintainability](https://qlty.sh/gh/aensley/projects/liturgy-day/maintainability.svg)][qltysh]
 [![Test Coverage](https://qlty.sh/gh/aensley/projects/liturgy-day/coverage.svg)][qltysh]
 [![API testing status](https://img.shields.io/github/actions/workflow/status/aensley/liturgy-day/integration-test.yml?branch=main&label=api&logo=github)](https://github.com/aensley/liturgy-day/actions/workflows/integration-test.yml?query=branch%3Amain)
