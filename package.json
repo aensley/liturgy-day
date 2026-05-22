@@ -79,6 +79,10 @@
     "ts-standard": "^12.0.2",
     "typescript": "^6.0.3"
   },
+  "overrides": {
+    "axios": "^1.16.1",
+    "lodash": "^4.18.1"
+  },
   "release": {
     "branches": [
       "main"
