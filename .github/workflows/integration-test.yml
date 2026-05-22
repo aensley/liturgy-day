@@ -5,6 +5,11 @@ on:
     types:
       - completed
 
+permissions:
+  statuses: write
+  contents: read
+  checks: read
+
 jobs:
   test:
     if: github.event.check_run.name == 'Cloudflare Pages' && github.event.check_run.conclusion == 'success'
