@@ -47,21 +47,22 @@ jobs:
       - name: Report prod deployments
         run: |
           branchName="$(gh api -H 'Accept: application/vnd.github+json' \
-            /repos/aensley/liturgy-day/check-suites/${{ github.event.check_run.check_suite.id }} \
+            /repos/aensley/liturgy-day/check-suites/${CHECK_SUITE_ID} \
             --jq '.head_branch')"
 
           if [ "$branchName" = "main" ]; then
-            releaseVersion="${{ github.event.check_run.head_sha }}"
             curl -u ${ASSERTIBLE_DEPLOY_TOKEN}: "https://assertible.com/deployments" -d'{
                 "service": "04fecc16-3562-4972-b580-0bc9b4f81d8a",
                 "environment": "production",
-                "version": "'${releaseVersion:0:7}'"
+                "version": "'${HEAD_SHA:0:7}'"
             }'
           fi
 
         env:
           ASSERTIBLE_DEPLOY_TOKEN: ${{ secrets.ASSERTIBLE_DEPLOY_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.check_run.head_sha }}
+          CHECK_SUITE_ID: ${{ github.event.check_run.check_suite.id }}
 
       - name: Set final commit status
         uses: myrotvorets/set-commit-status-action@master

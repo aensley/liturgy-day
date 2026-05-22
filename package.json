@@ -105,7 +105,14 @@
           ]
         }
       ],
-      "@semantic-release/npm",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "dist",
+          "npmPublish": true,
+          "provenance": true
+        }
+      ],
       [
         "@semantic-release/git",
         {
