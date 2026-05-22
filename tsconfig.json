@@ -6,11 +6,12 @@
     "esModuleInterop": true,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["node", "@types/jest"],
+    "types": ["node", "@types/jest", "@cloudflare/workers-types"],
     "outDir": "dist",
     "rootDir": "./"
   },
-  "include": ["./src/ts/**/*"],
+  "include": ["./src/ts/**/*", "./functions/**/*"],
   "exclude": ["./node_modules/**/*", "./dist/**/*", "./test/**/*"]
 }

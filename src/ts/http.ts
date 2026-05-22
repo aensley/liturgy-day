@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/cloudflare'
 import { isValidDate } from './date'
 
 /**
@@ -8,6 +9,7 @@ import { isValidDate } from './date'
  * @returns {Promise<Response>}
  */
 export const returnError = async (e: any): Promise<Response> => {
+  Sentry.captureException(e)
   let statusNumber: number
   switch (e.constructor) {
     case Error:

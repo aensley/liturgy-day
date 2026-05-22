@@ -2,8 +2,12 @@ name: openapi-diff-pr
 
 on: pull_request
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
-  openapi-compatiable:
+  openapi-diff-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Check out HEAD revision
@@ -17,21 +21,22 @@ jobs:
           ref: ${{ github.base_ref }}
           path: base
       - name: Check for breaking API changes
-        uses: oasdiff/oasdiff-action/breaking@v0.0.45
+        uses: oasdiff/oasdiff-action/breaking@6147a58e5d1249a12f42fc864ab791d571a30015 # v0.0.47
         with:
           base: base/src/openapi.yml
           revision: head/src/openapi.yml
           fail-on: ERR
       - name: Generate diff report
         if: always()
-        uses: oasdiff/oasdiff-action/changelog@v0.0.45
+        uses: oasdiff/oasdiff-action/changelog@6147a58e5d1249a12f42fc864ab791d571a30015 # v0.0.47
         with:
           base: base/src/openapi.yml
           revision: head/src/openapi.yml
-          format: html
-          output: ./output/openapi.html
-      - uses: actions/upload-artifact@v7
+          format: markdown
+          output-to-file: ./openapi.md
+      - name: Post diff report to PR
         if: always()
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
-          name: diff-reports
-          path: ./output
+          issue-number: ${{ github.event.pull_request.number }}
+          body-file: ./openapi.md

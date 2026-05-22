@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22, 24]
+        node-version: [24, 26]
     steps:
       - uses: actions/checkout@v6
         with:
@@ -23,7 +23,7 @@ jobs:
         run: npm test
       - name: Report Coverage
         uses: qltysh/qlty-action/coverage@v2
-        if: ${{ matrix.node-version == 24 }}
+        if: ${{ matrix.node-version == 26 }}
         with:
           token: ${{ secrets.CC_TEST_REPORTER_ID }}
           files: coverage/lcov.info

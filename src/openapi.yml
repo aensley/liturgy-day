@@ -1,7 +1,6 @@
 openapi: 3.0.3
 info:
   title: Liturgy.day
-  #summary: A REST API for Liturgical queries
   version: 1.2.0
   contact:
     name: Andrew Ensley
@@ -614,6 +613,148 @@ paths:
             $headers=@{}
             $headers.Add("Accept", "application/json")
             $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/rosary-days/2023-01-09' -Method GET -Headers $headers
+  /version:
+    get:
+      summary: version
+      operationId: version
+      description: |
+        Return the current API version.
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versionResponse'
+              example:
+                version: 1.2.0
+      x-code-samples:
+        - lang: shell
+          label: 'CLI'
+          source: |
+            curl -X GET 'https://liturgy.day/api/version' \
+              -H 'Accept: application/json'
+        - lang: javascript
+          label: 'Node.js'
+          source: |
+            const fetch = require('node-fetch');
+            fetch('https://liturgy.day/api/version', {
+              method: 'GET',
+              headers: { 'Accept': 'application/json' }
+            })
+              .then((response) => response.json())
+              .then((response) => console.log(response))
+              .catch((err) => console.error(err))
+        - lang: javascript
+          label: 'JavaScript'
+          source: |
+            fetch('https://liturgy.day/api/version', {
+              method: 'GET',
+              headers: { 'Accept': 'application/json' }
+            })
+              .then((response) => response.json())
+              .then((response) => console.log(response))
+              .catch((err) => console.error(err))
+        - lang: java
+          label: Java
+          source: |
+            HttpResponse<String> response = Unirest.get("https://liturgy.day/api/version")
+              .header("Accept", "application/json")
+              .asString();
+        - lang: swift
+          label: Swift
+          source: |
+            import Foundation
+            let headers = ["Accept": "application/json"]
+            let request = NSMutableURLRequest(url: NSURL(string: "https://liturgy.day/api/version")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+              if (error != nil) {
+                print(error)
+              } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse)
+              }
+            })
+
+            dataTask.resume()
+        - lang: python
+          label: Python
+          source: |
+            import requests
+            url = "https://liturgy.day/api/version"
+            headers = {"Accept": "application/json"}
+            response = requests.request("GET", url, headers=headers)
+            print(response.text)
+        - lang: csharp
+          label: C#
+          source: |
+            var client = new RestClient("https://liturgy.day/api/version");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+            IRestResponse response = client.Execute(request);
+        - lang: go
+          label: Go
+          source: |
+            package main
+            import (
+              "fmt"
+              "net/http"
+              "io/ioutil"
+            )
+
+            func main() {
+              url := "https://liturgy.day/api/version"
+              req, _ := http.NewRequest("GET", url, nil)
+              req.Header.Add("Accept", "application/json")
+              res, _ := http.DefaultClient.Do(req)
+              defer res.Body.Close()
+              body, _ := ioutil.ReadAll(res.Body)
+              fmt.Println(res)
+              fmt.Println(string(body))
+            }
+        - lang: php
+          label: PHP
+          source: |
+            $client = new http\Client;
+            $request = new http\Client\Request;
+
+            $request->setRequestUrl('https://liturgy.day/api/version');
+            $request->setRequestMethod('GET');
+            $request->setHeaders([ 'Accept' => 'application/json' ]);
+
+            $client->enqueue($request)->send();
+            $response = $client->getResponse();
+            echo $response->getBody();
+        - lang: ruby
+          label: Ruby
+          source: |
+            require 'uri'
+            require 'net/http'
+            require 'openssl'
+
+            url = URI("https://liturgy.day/api/version")
+
+            http = Net::HTTP.new(url.host, url.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+            request = Net::HTTP::Get.new(url)
+            request["Accept"] = 'application/json'
+
+            response = http.request(request)
+            puts response.read_body
+        - lang: powershell
+          label: PowerShell
+          source: |
+            $headers=@{}
+            $headers.Add("Accept", "application/json")
+            $response = Invoke-RestMethod -Uri 'https://liturgy.day/api/version' -Method GET -Headers $headers
 components:
   parameters:
     pathDate:
@@ -689,6 +830,15 @@ components:
           $ref: '#/components/schemas/season'
         rosary-days:
           $ref: '#/components/schemas/rosary-days'
+    versionResponse:
+      type: object
+      required:
+        - version
+      properties:
+        version:
+          type: string
+          description: The current API version.
+          example: 1.2.0
     errorMessage:
       type: string
       maxLength: 256
