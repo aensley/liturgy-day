@@ -3,7 +3,7 @@ name: openapi-diff-pr
 on: pull_request
 
 jobs:
-  openapi-compatiable:
+  openapi-diff-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Check out HEAD revision
@@ -17,11 +17,14 @@ jobs:
           ref: ${{ github.base_ref }}
           path: base
       - name: Check for breaking API changes
-        uses: oasdiff/oasdiff-action/breaking@v0.0.45
+        uses: oasdiff/oasdiff-action/breaking@v0.0.47
         with:
           base: base/src/openapi.yml
           revision: head/src/openapi.yml
           fail-on: ERR
+      - name: Create output directory
+        if: always()
+        run: mkdir -p ./output
       - name: Generate diff report
         if: always()
         uses: oasdiff/oasdiff-action/changelog@v0.0.47
