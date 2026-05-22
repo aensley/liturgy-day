@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Liturgy.day
-  version: 1.2.0
+  version: 1.3.0
   contact:
     name: Andrew Ensley
     url: https://github.com/aensley/liturgy-day/issues/new/choose
