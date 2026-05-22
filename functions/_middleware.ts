@@ -10,5 +10,6 @@ interface Env {
 export const onRequest = sentryPagesPlugin<Env>((context) => ({
   dsn: context.env.SENTRY_DSN,
   tracesSampleRate: 1.0,
+  sendDefaultPii: true,
   release: context.env.ENVIRONMENT === 'production' ? version : context.env.CF_PAGES_COMMIT_SHA
 }))
