@@ -81,7 +81,8 @@
   },
   "overrides": {
     "axios": "^1.16.1",
-    "lodash": "^4.18.1"
+    "lodash": "^4.18.1",
+    "tmp": "^0.2.4"
   },
   "release": {
     "branches": [
