@@ -113,7 +113,6 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "dist",
           "npmPublish": true,
           "provenance": true
         }
