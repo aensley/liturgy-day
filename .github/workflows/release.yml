@@ -24,7 +24,7 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
     strategy:
       matrix:
-        node-version: [26]
+        node-version: [22]
     steps:
       - uses: actions/checkout@v6
         with:
